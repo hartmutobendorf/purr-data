@@ -88,6 +88,17 @@ function load_menu_actions(){
         }
     });
 
+    minit("find_below", {
+        onclick: function(e) {
+            console_find_below()
+        }
+    });
+
+    minit("find_above", {
+        onclick: function(e) {
+            console_find_above()
+        }
+    });
 
     // Media entries
     minit("media-test",{onclick: function(){pdbundle.pdgui.web_pd_doc_open("doc/7.stuff/tools", "testtone.pd")}});
