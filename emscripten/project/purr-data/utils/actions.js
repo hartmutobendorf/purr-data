@@ -89,13 +89,13 @@ function load_menu_actions(){
     });
 
     minit("find_below", {
-        onclick: function(e) {
+        onclick: function() {
             console_find_below()
         }
     });
 
     minit("find_above", {
-        onclick: function(e) {
+        onclick: function() {
             console_find_above()
         }
     });
