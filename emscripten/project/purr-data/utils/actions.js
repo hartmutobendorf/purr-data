@@ -46,6 +46,9 @@ function load_menu_actions(){
                 window.getSelection().empty();
                 window.getSelection().addRange(range);
             }
+            // show sidebar
+            $("#console_bottom").collapse("show");
+            $("#open-icon").removeClass("rotate");
         }
     });
 
@@ -99,6 +102,36 @@ function load_menu_actions(){
             console_find_above()
         }
     });
+    
+    // View entries
+
+    minit("view-fullscreen",{onclick: 
+        function(){
+            if (!document.fullscreenElement &&
+                !document.mozFullScreenElement && 
+                !document.webkitFullscreenElement && 
+                !document.msFullscreenElement ) {
+              if (document.documentElement.requestFullscreen) {
+                document.documentElement.requestFullscreen();
+              } else if (document.documentElement.msRequestFullscreen) {
+                document.documentElement.msRequestFullscreen();
+              } else if (document.documentElement.mozRequestFullScreen) {
+                document.documentElement.mozRequestFullScreen();
+              } else if (document.documentElement.webkitRequestFullscreen) {
+                document.documentElement.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
+              }
+            } else {
+              if (document.exitFullscreen) {
+                document.exitFullscreen();
+              } else if (document.msExitFullscreen) {
+                document.msExitFullscreen();
+              } else if (document.mozCancelFullScreen) {
+                document.mozCancelFullScreen();
+              } else if (document.webkitExitFullscreen) {
+                document.webkitExitFullscreen();
+              }
+            }
+        }});
 
     // Media entries
     minit("media-test",{onclick: function(){pdbundle.pdgui.web_pd_doc_open("doc/7.stuff/tools", "testtone.pd")}});
@@ -160,8 +193,10 @@ function add_shortcuts(cid){
         // Add key
         shortcut += e.key.toUpperCase();
         if(window.shortkeys[cid].hasOwnProperty(shortcut)){
-            e.preventDefault()         
-            window.shortkeys[cid][shortcut].click();
+            if (shortcut!=="F11") {
+                e.preventDefault();
+                window.shortkeys[cid][shortcut].click();
+            }        
         }
     }
 }
