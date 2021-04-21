@@ -2035,6 +2035,25 @@ function upload_patch(files) {
         return;
     }
 
+    var fileInput = document.getElementById("uploadPatch");
+    var allowedExtension = ".pd";
+
+    // Check that the file extension is supported.
+    // If not, clear the input.
+    var hasInvalidFiles = false;
+    for (var i = 0; i < files.length; i++) {
+        var file = files[i];
+        
+        if (!file.name.endsWith(allowedExtension)) {
+        hasInvalidFiles = true;
+        }
+    }
+    
+    if(hasInvalidFiles) {
+        fileInput.value = ""; 
+        alert("Unsupported file selected.");
+    }
+
     for (const file of files){
         var reader = new FileReader();
         reader.onload = function () {
