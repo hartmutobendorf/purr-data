@@ -182,6 +182,7 @@ mark {
 mark.console_find_current.console_find_highlighted,
 mark.console_find_current {
     background: yellow !important;
+    padding: 0;
 }
 
 mark.console_find_highlighted {
