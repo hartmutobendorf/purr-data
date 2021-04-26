@@ -116,7 +116,6 @@ var console_find_traverse = (function () {
                 }
                 // adjust the scrollbar to make sure the element is visible,
                 // but only if necessary.
-                // I don't think this is available on all browsers...
                 var isFirefox = typeof InstallTrigger !== 'undefined'; // checks if browser is Firefox or not
                 if (isFirefox) {
                     elements[i].scrollIntoView();
@@ -145,7 +144,6 @@ var console_find_traverse = (function () {
                 }
                 // adjust the scrollbar to make sure the element is visible,
                 // but only if necessary.
-                // I don't think this is available on all browsers...
                 var isFirefox = typeof InstallTrigger !== 'undefined'; // checks if browser is Firefox or not
                 if (isFirefox) {
                     elements[i].scrollIntoView();
@@ -161,6 +159,14 @@ var console_find_traverse = (function () {
             var elements = console_text.getElementsByTagName(wrap_tag);
             if (elements.length > 0) {
                 elements[0].classList.add("console_find_current");
+            }
+            // adjust the scrollbar to make sure the element is visible,
+            // but only if necessary.
+            var isFirefox = typeof InstallTrigger !== 'undefined'; // checks ifbrowser is Firefox or not
+            if (isFirefox) {
+                elements[0].scrollIntoView();
+            } else {
+                elements[0].scrollIntoViewIfNeeded();
             }
         }
     };
