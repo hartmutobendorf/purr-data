@@ -110,25 +110,6 @@ function menu_options(type, w, cid) {
         },
 
         // View entries
-        "view-zoomin": {
-            label: l("menu.zoomin"),
-            key: pdbundle.shortcuts.menu.zoomin_web.key,
-            modifiers: pdbundle.shortcuts.menu.zoomin_web.modifiers,
-            tooltip: l("menu.zoomin_tt")
-        },
-        "view-zoomout": {
-            label: l("menu.zoomout"),
-            key: pdbundle.shortcuts.menu.zoomout_web.key,
-            modifiers: pdbundle.shortcuts.menu.zoomout_web.modifiers,
-            tooltip: l("menu.zoomout_tt")
-        },
-        "view-zoomreset": {
-            label: l("menu.zoomreset"),
-            key: pdbundle.shortcuts.menu.zoomreset_web.key,
-            modifiers: pdbundle.shortcuts.menu.zoomreset_web.modifiers,
-            tooltip: l("menu.zoomreset_tt"),
-            top_hr: {}
-        },
         "view-fullscreen": {
             label: l("menu.fullscreen"),
             key: pdbundle.shortcuts.menu.fullscreen_web.key,
@@ -436,6 +417,25 @@ function menu_options(type, w, cid) {
         },
 
         // View section
+        "view-zoomreset": {
+            label: l("menu.zoomreset"),
+            key: pdbundle.shortcuts.menu.zoomreset_web.key,
+            modifiers: pdbundle.shortcuts.menu.zoomreset_web.modifiers,
+            tooltip: l("menu.zoomreset_tt"),
+            top_hr: {}
+        },
+        "view-zoomin": {
+            label: l("menu.zoomin"),
+            key: pdbundle.shortcuts.menu.zoomin_web.key,
+            modifiers: pdbundle.shortcuts.menu.zoomin_web.modifiers,
+            tooltip: l("menu.zoomin_tt")
+        },
+        "view-zoomout": {
+            label: l("menu.zoomout"),
+            key: pdbundle.shortcuts.menu.zoomout_web.key,
+            modifiers: pdbundle.shortcuts.menu.zoomout_web.modifiers,
+            tooltip: l("menu.zoomout_tt")
+        },
         ...view_base,
 
         // View entries
