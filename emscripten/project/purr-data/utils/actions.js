@@ -181,6 +181,7 @@ function add_shortcuts(cid){
         shortcut += e.altKey ? "Alt+": "";
         // Add key
         shortcut += e.key.toUpperCase();
+        console.log(shortcut);
         if(window.shortkeys[cid].hasOwnProperty(shortcut)){
             switch(shortcut) {
                 case "Ctrl+0":
