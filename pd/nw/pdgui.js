@@ -7,7 +7,7 @@ var pd_engine_id;
 
 
 function is_webapp(){
-    return typeof process === "undefined";
+    return typeof process.platform === "undefined";
 }
 
 exports.is_webapp = is_webapp;
