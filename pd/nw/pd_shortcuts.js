@@ -1,18 +1,9 @@
 "use strict";
 
-function getOS() {
-  var platform = window.navigator.platform,
-      macosPlatforms = ['Macintosh', 'MacIntel', 'MacPPC', 'Mac68K'],
-      os = null;
+var is_webapp = typeof process === "undefined";
+var is_mac = is_webapp ? navigator.platform.toUpperCase().indexOf("MAC") > -1 : process.platform === "darwin";
+var cmd_or_ctrl = is_mac ? "Cmd" : "Ctrl";
 
-  if (macosPlatforms.indexOf(platform) !== -1) {
-    os = 'Mac';
-  }
-
-  return os;
-}
-
-var cmd_or_ctrl = (getOS() === "Mac") ? "Cmd" : "Ctrl";
 
 exports.menu = {
   "new":   { key: "N", modifiers: cmd_or_ctrl },
@@ -107,7 +98,7 @@ exports.menu = {
   "find_web":   { key: "F", modifiers: cmd_or_ctrl },
   "findagain_web":{ key: "F", modifiers: cmd_or_ctrl + "+Shift"},
   "editmode_web": { key: "E", modifiers: cmd_or_ctrl + "+Shift" },
-  "preferences_web": { key: (getOS() === "Mac") ? "," : "P",
+  "preferences_web": { key: (is_mac) ? "," : "P",
     modifiers: cmd_or_ctrl },
 
   "zoomin_web": { key: "=", modifiers: cmd_or_ctrl },
@@ -116,8 +107,8 @@ exports.menu = {
   "zoomoptimal_web": { key: "9", modifiers: cmd_or_ctrl },
   "zoomhoriz_web": { key: "9", modifiers: cmd_or_ctrl },
   "zoomvert_web": { key: "9", modifiers: cmd_or_ctrl + "+Shift" },
-  "fullscreen_web": { key: (getOS() === "Mac") ? "F" : "F11",
-    modifiers: (getOS() === "Mac") ? "Cmd+Ctrl" : null },
+  "fullscreen_web": { key: (is_mac) ? "F" : "F11",
+    modifiers: (is_mac) ? "Cmd+Ctrl" : null },
 
   "object_web": { key: "1", modifiers: cmd_or_ctrl },
   "msgbox_web": { key: "2", modifiers: cmd_or_ctrl },
