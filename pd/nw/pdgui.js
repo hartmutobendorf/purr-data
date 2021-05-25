@@ -12,6 +12,13 @@ function is_webapp(){
 
 exports.is_webapp = is_webapp;
 
+if (is_webapp()) {
+    if (navigator.platform.toUpperCase().indexOf("MAC") > -1) {
+        process.platform = "darwin";
+    } else if (navigator.platform.toUpperCase().indexOf("WIN") > -1) {
+        process.platform = "win32";
+    }
+}
 
 exports.set_pwd = function(pwd_string) {
     pwd = pwd_string;
