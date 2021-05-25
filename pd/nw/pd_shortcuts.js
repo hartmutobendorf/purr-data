@@ -1,6 +1,6 @@
 "use strict";
 
-var cmd_or_ctrl = process.platform === "darwin" ? "Cmd" : "Ctrl";
+var cmd_or_ctrl = (process.platform === "darwin") ? "Cmd" : "Ctrl";
 
 exports.menu = {
   "new":   { key: "N", modifiers: cmd_or_ctrl },

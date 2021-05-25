@@ -7,7 +7,10 @@ var pd_engine_id;
 
 
 function is_webapp(){
-    return typeof process.platform === "undefined";
+    if(typeof(Module) === "undefined"){
+        return false;
+    }
+    return true;
 }
 
 exports.is_webapp = is_webapp;
