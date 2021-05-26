@@ -1,310 +1,483 @@
 <!DOCTYPE html>
-<html>
+<html id="prefs_html_element">
   <head>
-    <meta charset="UTF-8">
     <link id="page_style" rel="stylesheet" type="text/css" href="css/default.css">
-    <title>Canvas Dialog</title>
   </head>
-  <body class="dialog_body">
-    <div class="container noselect">
-    <form> 
-
-      <fieldset class="canvas"> 
-        <legend data-i18n="canvas.prop.heading.gop"></legend> 
-
-        <table class="pairs">
-          <tr class="prop no_scroll hidden" data-i18n="[title]canvas.prop.no_scroll_tt">
-            <td colspan="2">
-              <label>
-                <input type="checkbox" name="no_scroll" value="off">
-                <span data-i18n="canvas.prop.no_scroll"></span>
-              </label>
-            </td>
-          </tr>
-          <tr class="prop no_menu hidden" data-i18n="[title]canvas.prop.no_menu_tt">
-            <td colspan="2">
-              <label>
-                <input type="checkbox" name="no_menu" value="off">
-                <span data-i18n="canvas.prop.no_menu"></span>
-              </label>
-            </td>
-          </tr>
-          <tr class="display_flags prop hidden" data-i18n="[title]canvas.prop.gop_tt">
-            <td colspan="2">
-              <label>
-                <input type="checkbox" name="gop" value="on">
-                <span data-i18n="canvas.prop.gop"></span>
-              </label>
-            </td>
-          </tr>
-          <tr class="x_pix prop hidden">
-            <td>
-            </td>
-            <td>
-              <table>
-                <tr>
-                  <td> 
-                    <label class="gop_opt" data-i18n="[title]canvas.prop.x_pix_tt">
-                      <span data-i18n="canvas.prop.x_pix"></span>
-                    </label>
-                  </td>
-                  <td data-i18n="[title]canvas.prop.x_pix_tt">
-                    <input class="gop_opt" type="text" name="x_pix">
-                  </td>
-                  <td>
-                    <label class="gop_opt" data-i18n="[title]canvas.prop.y_pix_tt">
-                      <span data-i18n="canvas.prop.y_pix"></span>
-                    </label>
-                  </td>
-                  <td data-i18n="[title]canvas.prop.y_pix_tt">
-                    <input class="gop_opt" type="text" name="y_pix">
-                  </td>
-                </tr>
-                <tr class="x_margin prop hidden">
-                  <td>
-                    <label class="gop_opt" data-i18n="[title]canvas.prop.x_margin_tt">
-                      <span data-i18n="canvas.prop.x_margin"></span>
-                    </label>
-                  </td>
-                  <td data-i18n="[title]canvas.prop.x_margin_tt">
-                    <input class="gop_opt" type="text" name="x_margin">
-                  </td>
-                  <td>
-                    <label class="gop_opt" data-i18n="[title]canvas.prop.y_margin_tt">
-                      <span data-i18n="canvas.prop.y_margin"></span>
-                    </label>
-                  </td>
-                  <td data-i18n="[title]canvas.prop.y_margin_tt">
-                    <input class="gop_opt" type="text" name="y_margin">
-                  </td>
-                </tr>
-              </table>
-            </td>
-          </tr>
-          <tr class="display_flags prop hide_name_row">
-            <td>
-            </td>
-            <td>
-              <label class="gop_opt" data-i18n="[title]canvas.prop.hide_name_tt">
-                <input class="gop_opt" type="checkbox" name="hide_name" value="on">
-                <span data-i18n="canvas.prop.hide_name"></span>
-              </label>
-            </td>
-          </tr>
-        </table>
-      </fieldset> 
-
-      <fieldset class="canvas"> 
-        <legend data-i18n="canvas.prop.heading.data_scaling"></legend> 
-<div style="display: inline-block; align: left;">
-          <div class="x_scale prop hidden">
-            <nobr>
-            <label class="no_gop_opt" data-i18n="[title]canvas.prop.x_scale_tt">
-              <span data-i18n="canvas.prop.x_scale"></span>
-              <input class="no_gop_opt" type="text" name="x_scale">
-            </label>
-            <label class="no_gop_opt" data-i18n="[title]canvas.prop.y_scale_tt">
-              <span data-i18n="canvas.prop.y_scale"></span>
-              <input class="no_gop_opt" type="text" name="y_scale">
-            </label>
-            </nobr>
-          </div>
-
-    <div class="gop-range">
-        <div class="y1 prop hidden">
-          <label class="gop_opt" data-i18n="[title]canvas.prop.y1_tt">
-            <span data-i18n="canvas.prop.y1"></span>
-            <br>
-          <input class="gop_opt" type="text" name="y1">
-          </label>
-          <br>
-        </div>
-
-        <div class="x1 prop hidden">
-          <label class="gop_opt" data-i18n="[title]canvas.prop.x1_tt">
-            <span data-i18n="canvas.prop.x1"></span>
-            <input class="gop_opt" type="text" name="x1">
-          </label>
-          <label class="gop_opt" data-i18n="[title]canvas.prop.x2_tt">
-            <input class="gop_opt" type="text" name="x2">
-            <span data-i18n="canvas.prop.x2"></span>
-          </label>
-          <br>
-       </div>
-
-       <div class="y2">
-         <label class="gop_opt" data-i18n="[title]canvas.prop.y2_tt">
-           <input class="gop_opt" type="text" name="y2">
-           <br>
-           <span data-i18n="canvas.prop.y2"></span>
-         </label>
-       </div>
-    </div>
-</div>
-      </fieldset> 
-
-
-      <fieldset id="arrays" class="hidden">
-        <legend data-i18n="canvas.prop.heading.arrays"></legend> 
-
-        <label class="arrays" data-i18n="[title]canvas.prop.array_name">
-          <select id="arrays_select" class="hidden"></select>
+  <body class="dialog_body prefs_body">
+    <div class="container noselect prefs_container">
+      <div class="prefs_tab_group">
+        <input type="radio"
+               name="prefs_radio_group"
+               id="audio_tab_radio"
+               class="tab1 prefs_tab"
+               checked="checked" />
+        <label for="audio_tab_radio" data-i18n="[title]prefs.heading.audio_tt">
+          <span data-i18n="prefs.heading.audio"></span>
         </label>
 
-          <div class="array-name prop">
-            <label class="array-name"
-                   data-i18n="[title]canvas.prop.array_name_tt">
-              <span data-i18n="canvas.prop.array_name"></span>
-              <input onchange="update_array_attr(this);"
-                     class="array-name"
-                     type="text"
-                     name="array_name"
-                     id="array_name_input">
-            </label>
-            <label class="array-size"
-                   data-i18n="[title]canvas.prop.array_size_tt">
-              <span data-i18n="canvas.prop.array_size"></span>
-              <input onchange="update_array_attr(this);"
-                     class="array-size"
-                     type="text"
-                     name="array_size">
-            </label>
-            <br/>
-            <label class="array-save"
-                   data-i18n="[title]canvas.prop.array_save_tt">
-              <input onchange="flag_change(this);"
-                     type="checkbox"
-                     name="array_save"
-                     value="on">
-              <span data-i18n="canvas.prop.array_save"></span>
-            </label>
-            <br/>
-            <label class="array-jump"
-                   data-i18n="[title]canvas.prop.array_jump_tt">
-              <input onchange="flag_change(this);"
-                     type="checkbox" name="array_jump" value="on">
-              <span data-i18n="canvas.prop.array_jump"></span>
-            </label>
-            <br/>
+        <input type="radio"
+               name="prefs_radio_group"
+               id="midi_tab_radio"
+               class="tab2 prefs_tab"/>
+        <label for="midi_tab_radio" data-i18n="[title]prefs.heading.midi_tt">
+          <span data-i18n="prefs.heading.midi"></span>
+        </label>
 
-            <span data-i18n="canvas.prop.array_style"></span>
-            <br/>
-            <table class="array_style">
+        <input type="radio"
+               name="prefs_radio_group"
+               id="gui_tab_radio"
+               class="tab3 prefs_tab"/>
+        <label for="gui_tab_radio" data-i18n="[title]prefs.heading.gui_tt">
+          <span data-i18n="prefs.heading.gui"></span>
+        </label>
+
+        <input type="radio"
+               name="prefs_radio_group"
+               id="startup_tab_radio"
+               class="tab4 prefs_tab"/>
+        <label for="startup_tab_radio" data-i18n="[title]prefs.heading.startup_tt">
+          <span data-i18n="prefs.heading.startup"></span>
+        </label>
+
+        <div class="tab1">
+          <table class="tab_settings">
+            <tr data-i18n="[title]prefs.audio.api_tt">
+              <td>
+                <span data-i18n="prefs.audio.api"></span>
+              </td>
+              <td>
+                <select id="audio_api" onchange="change_api(this);">
+                </select>
+              </td>
+            </tr>
+            <tr data-i18n="[title]prefs.audio.sr_tt">
+              <td>
+                <span data-i18n="prefs.audio.sr"></span>
+              </td>
+              <td>
+                <input type="text"
+                       id="rate"
+                       name="rate"
+                       onchange="attr_change(this);">
+              </td>
+            </tr>
+            <tr data-i18n="[title]prefs.audio.blocksize_tt">
+              <td>
+                <span data-i18n="prefs.audio.blocksize"></span>
+              </td>
+              <td>
+                <select id="blocksize"
+                        onchange="attr_change(this);">
+                  <option value="64">64</option>
+                  <option value="128">128</option>
+                  <option value="256">256</option>
+                  <option value="512">512</option>
+                  <option value="1024">1024</option>
+                  <option value="2048">2048</option>
+                </select>
+              </td>
+            <tr data-i18n="[title]prefs.audio.advance_tt">
+              <td>
+                <span data-i18n="prefs.audio.advance"></span>
+              </td>
+              <td>
+                <input type="text"
+                       id="advance"
+                       name="advance"
+                       onchange="attr_change(this);">
+              </td>
+            </tr>
+            <tr id="callback_container" class="hidden"
+                data-i18n="[title]prefs.audio.callback_tt">
+              <td>
+                <span data-i18n="prefs.audio.callback"></span>
+              </td>
+              <td>
+                <input type="checkbox" id="callback" name="callback">
+              </td>
+            </tr>
+            <tr id="multi_dev_container" class="hidden"
+                data-i18n="[title]prefs.audio.callback_tt">
+              <td>
+                <span data-i18n="prefs.audio.callback"></span>
+              </td>
+              <td>
+                <input type="checkbox" id="multi-dev" name="multi-dev">
+              </td>
+            </tr>
+          </table>
+          <table class="tab_settings">
+            <tr>
+              <td data-i18n="[title]prefs.audio.input_title_tt">
+                <span data-i18n="prefs.audio.input_title"></span>
+              </td>
+              <td>
+                <span data-i18n="prefs.audio.channels"></span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <select id="in1" onchange="dev_change(this);"></select>
+              </td>
+              <td>
+                <label data-i18n="[title]prefs.audio.channels_tt">
+                  <input type="text"
+                   id="inchans1"
+                   name="inchans1"
+                   onchange="dev_change(this);">
+                </label>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <select id="in2" onchange="dev_change(this);"></select>
+              </td>
+              <td>
+                <label data-i18n="[title]prefs.audio.channels_tt">
+                  <input type="text"
+                   id="inchans2"
+                   name="inchans2"
+                   onchange="dev_change(this);">
+                </label>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <select id="in3" onchange="dev_change(this);"></select>
+              </td>
+              <td>
+                <label data-i18n="[title]prefs.audio.channels_tt">
+                  <input type="text"
+                   id="inchans3"
+                   name="inchans3"
+                   onchange="dev_change(this);">
+                </label>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <select id="in4" onchange="dev_change(this);"></select>
+              </td>
+              <td>
+                <label data-i18n="[title]prefs.audio.channels_tt">
+                  <input type="text"
+                   id="inchans4"
+                   name="inchans4"
+                   onchange="dev_change(this);">
+                </label>
+              </td>
+            </tr>
+            <tr>
+              <td data-i18n="[title]prefs.audio.output_title_tt">
+                <span data-i18n="prefs.audio.output_title"></span>
+              </td>
+              <td>
+                <span data-i18n="prefs.audio.channels"></span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <select id="out1" onchange="dev_change(this);"></select>
+              </td>
+              <td>
+                <label data-i18n="[title]prefs.audio.channels_tt">
+                  <input type="text"
+                   id="outchans1"
+                   name="outchans1"
+                   onchange="dev_change(this);">
+                </label>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <select id="out2" onchange="dev_change(this);"></select>
+              </td>
+              <td>
+                <label data-i18n="[title]prefs.audio.channels_tt">
+                  <input type="text"
+                   id="outchans2"
+                   name="outchans2"
+                   onchange="dev_change(this);">
+                </label>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <select id="out3" onchange="dev_change(this);"></select>
+              </td>
+              <td>
+                <label data-i18n="[title]prefs.audio.channels_tt">
+                  <input type="text"
+                   id="outchans3"
+                   name="outchans3"
+                   onchange="dev_change(this);">
+                </label>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <select id="out4" onchange="dev_change(this);"></select>
+              </td>
+              <td>
+                <label data-i18n="[title]prefs.audio.channels_tt">
+                  <input type="text"
+                   id="outchans4"
+                   name="outchans4"
+                   onchange="dev_change(this);">
+                </label>
+              </td>
+            </tr>
+          </table>
+        </div>
+
+        <div class="tab2">
+          <div class="tab_settings midi_api_container">
+            <label data-i18n="[title]prefs.midi.api_tt">
+              <span data-i18n="prefs.midi.api"></span>
+              <select id="midi_api" onchange="change_api(this);">
+              </select>
+            </label>
+          </div>
+          <div class="tab_settings alsa_midi">
+            <label data-i18n="[title]prefs.midi.alsa_in_ports_tt">
+              <span data-i18n="prefs.midi.alsa_in_ports"></span>
+              <input type="text"
+                     id="alsa_in_ports"
+                     name="alsa_in_ports"
+                     onchange="alsa_in_ports_change(this);">
+            </label>
+            <label data-i18n="[title]prefs.midi.alsa_out_ports_tt">
+              <span data-i18n="prefs.midi.alsa_out_ports"></span>
+              <input type="text"
+                     id="alsa_out_ports"
+                     name="alsa_out_ports"
+                     onchange="alsa_out_ports_change(this);">
+            </label>
+          </div>
+
+          <div class="tab_settings midi_devices">
+            <span data-i18n="[title]prefs.midi.input_title_tt">
+              <span data-i18n="prefs.midi.input_title"></span>
+            </span>
+            <table class="tab_settings">
               <tr>
-                <td>
-                  <label class="polygon"
-                         data-i18n="[title]canvas.prop.array_polygon_tt">
-                    <input class="array-style"
-                           type="radio"
-                           id="polygon"
-                           value="0"
-                           name="array_style"
-                           onchange="flag_change(this);">
-                    <span data-i18n="canvas.prop.array_polygon"></span>
-                  </label>
+                <td>1</td><td>
+                  <select id="midi_in1" onchange="dev_change(this);"></select>
                 </td>
-                <td>
-                  <label class="points"
-                         data-i18n="[title]canvas.prop.array_points_tt">
-                    <input class="array-style"
-                           type="radio"
-                           id="points"
-                           value="1"
-                           name="array_style"
-                           onchange="flag_change(this);">
-                    <span data-i18n="canvas.prop.array_points"></span>
-                  </label>
+                <td align="right">6</td><td>
+                  <select id="midi_in6" onchange="dev_change(this);"></select>
                 </td>
               </tr>
               <tr>
-                <td>
-                  <label class="bezier-curve"
-                         data-i18n="[title]canvas.prop.array_bezier_tt">
-                    <input class="array-style"
-                           type="radio"
-                           id="bezier"
-                           value="2"
-                           name="array_style"
-                           onchange="flag_change(this);">
-                    <span data-i18n="canvas.prop.array_bezier"></span>
-                  </label>
+                <td>2</td><td>
+                  <select id="midi_in2" onchange="dev_change(this);"></select>
                 </td>
-                <td>
-                  <label class="bar-graph"
-                         data-i18n="[title]canvas.prop.array_bars_tt">
-                    <input class="array-style"
-                           type="radio"
-                           id="bar-graph"
-                           value="3"
-                           name="array_style"
-                           onchange="flag_change(this);">
-                    <span data-i18n="canvas.prop.array_bars"></span>
-                  </label>
+                <td align="right">7</td><td>
+                  <select id="midi_in7" onchange="dev_change(this);"></select>
+                </td>
+              </tr>
+              <tr>
+                <td>3</td><td>
+                  <select id="midi_in3" onchange="dev_change(this);"></select>
+                </td>
+                <td align="right">8</td><td>
+                  <select id="midi_in8" onchange="dev_change(this);"></select>
+                </td>
+              </tr>
+              <tr>
+                <td>4</td><td>
+                  <select id="midi_in4" onchange="dev_change(this);"></select>
+                </td>
+                <td align="right">9</td><td>
+                  <select id="midi_in9" onchange="dev_change(this);"></select>
+                </td>
+              </tr>
+              <tr>
+                <td>5</td><td>
+                  <select id="midi_in5" onchange="dev_change(this);"></select>
+                </td>
+                <td align="right">10</td><td>
+                  <select id="midi_in10" onchange="dev_change(this);"></select>
+                </td>
+              </tr>
+            </table>
+            <br/>
+            <span data-i18n="[title]prefs.midi.output_title_tt">
+              <span data-i18n="prefs.midi.output_title"></span>
+            </span>
+            <table class="tab_settings">
+              <tr>
+                <td>1</td><td>
+                  <select id="midi_out1" onchange="dev_change(this);"></select>
+                </td>
+                <td align="right">6</td><td>
+                  <select id="midi_out6" onchange="dev_change(this);"></select>
+                </td>
+              </tr>
+              <tr>
+                <td>2</td><td>
+                  <select id="midi_out2" onchange="dev_change(this);"></select>
+                </td>
+                <td align="right">7</td><td>
+                  <select id="midi_out7" onchange="dev_change(this);"></select>
+                </td>
+              </tr>
+              <tr>
+                <td>3</td><td>
+                  <select id="midi_out3" onchange="dev_change(this);"></select>
+                </td>
+                <td align="right">8</td><td>
+                  <select id="midi_out8" onchange="dev_change(this);"></select>
+                </td>
+              </tr>
+              <tr>
+                <td>4</td><td>
+                  <select id="midi_out4" onchange="dev_change(this);"></select>
+                </td>
+                <td align="right">9</td><td>
+                  <select id="midi_out9" onchange="dev_change(this);"></select>
+                </td>
+              </tr>
+              <tr>
+                <td>5</td><td>
+                  <select id="midi_out5" onchange="dev_change(this);"></select>
+                </td>
+                <td align="right">10</td><td>
+                  <select id="midi_out10" onchange="dev_change(this);"></select>
                 </td>
               </tr>
             </table>
           </div>
+        </div>
 
-      <div class="array-fill">
-        <label data-i18n="[title]canvas.prop.array_fill_tt">
-          <input onchange="update_array_attr(this);"
-                 type="color"
-                 name="array_fill">
-          <span data-i18n="canvas.prop.array_fill"></span>
-        </label>
-        <br>
+        <div class="tab3">
+          <div class="tab_settings">
+            <label data-i18n="[title]prefs.gui.presets.gui_preset_tt">
+              <span data-i18n="prefs.gui.presets.gui_preset"></span>
+            </label>
+            <select id="gui_preset" onchange="gui_preset_change(this);">
+              <option data-i18n="prefs.gui.presets.default" value="default">
+              </option>
+              <option data-i18n="prefs.gui.presets.inverted" value="inverted">
+              </option>
+              <option data-i18n="prefs.gui.presets.vanilla" value="vanilla">
+              </option>
+              <option data-i18n="prefs.gui.presets.vanilla_inverted" value="vanilla_inverted">
+              </option>
+              <option data-i18n="prefs.gui.presets.extended" value="extended">
+              </option>
+              <option data-i18n="prefs.gui.presets.c64" value="c64">
+              </option>
+              <option data-i18n="prefs.gui.presets.subdued" value="subdued">
+              </option>
+              <option data-i18n="prefs.gui.presets.strongbad" value="strongbad">
+              </option>
+              <option data-i18n="prefs.gui.presets.solarized" value="solarized">
+              </option>
+              <option data-i18n="prefs.gui.presets.solarized_inverted"
+                      value="solarized_inverted">
+              </option>
+              <option data-i18n="prefs.gui.presets.footgun" value="footgun">
+              </option>
+            </select>
+            <br/>
+            <label data-i18n="[title]prefs.gui.zoom.save_zoom_tt" style="text-align: left;">
+              <input type="checkbox" id="save_zoom" name="save_zoom">
+              <span data-i18n="prefs.gui.zoom.save_zoom"></span>
+            </label>
+            <br/>
+            <label data-i18n="[title]prefs.gui.autopatch_yoffset_checkbox_tt" style="text-align: left;">
+              <input type="checkbox" id="autopatch_yoffset"
+                     name="autopatch_yoffset"
+                     onchange="autopatch_yoffset_toggle(this.checked);">
+            <span data-i18n="prefs.gui.autopatch_yoffset"></span></span>:
+            </label>
+            <input type="text"
+                   id="autopatch_yoffset_value"
+                   name="autopatch_yoffset_value"
+                   data-i18n="[title]prefs.gui.autopatch_yoffset_tt">
+            <br/><br/>
+            <span data-i18n="prefs.gui.browser.browser_title"></span>
+            <br/>
+            <label data-i18n="[title]prefs.gui.browser.browser_doc_tt" style="text-align: left;">
+              <input type="checkbox" id="browser_doc" name="browser_doc">
+              <span data-i18n="prefs.gui.browser.browser_doc"></span>
+            </label>
+            <br/>
+            <label data-i18n="[title]prefs.gui.browser.browser_path_tt" style="text-align: left;">
+              <input type="checkbox" id="browser_path" name="browser_path">
+              <span data-i18n="prefs.gui.browser.browser_path"></span>
+            </label>
+            <br/>
+            <label data-i18n="[title]prefs.gui.browser.browser_init_tt" style="text-align: left;">
+              <input type="checkbox" id="browser_init" name="browser_init">
+              <span data-i18n="prefs.gui.browser.browser_init"></span>
+            </label>
+          </div>
+        </div>
+
+        <div class="tab4">
+          <div class="tab_settings">
+            <label data-i18n="[title]prefs.startup.paths_tt">
+              <span data-i18n="prefs.startup.paths"></span>
+            </label>
+            <div style="height:24vh; width:17vw; background:white; border: 1px solid #bbb; overflow-y:auto; overflow-x:auto; padding:0px;">
+              <table id="startup_paths" style="width:100%; background:white;">
+              </table>
+            </div>
+            <div class="submit_buttons">
+              <button type="button" onClick="startup_path_new()" data-i18n="[title]prefs.startup.new_tt">
+                <span data-i18n="prefs.startup.new"></span>
+              </button>
+              <button type="button" id="startup_path_edit" onClick="startup_path_edit()" data-i18n="[title]prefs.startup.edit_tt">
+                <span data-i18n="prefs.startup.edit"></span>
+              </button>
+              <button type="button" id="startup_path_delete" onClick="startup_path_delete()" data-i18n="[title]prefs.startup.del_tt">
+                <span data-i18n="prefs.startup.del"></span>
+              </button>
+            </div>
+            <label data-i18n="[title]prefs.startup.libs_tt">
+              <span data-i18n="prefs.startup.libs"></span>
+            </label>
+            <div style="height:24vh; width:17vw; background:white; border: 1px solid #bbb; overflow-y:auto; overflow-x:auto; padding:0px;">
+              <table id="startup_libs" style="width:100%; background:white;">
+              </table>
+            </div>
+            <div class="submit_buttons">
+              <button type="button" onClick="startup_lib_new()" data-i18n="[title]prefs.startup.new_tt">
+                <span data-i18n="prefs.startup.new"></span>
+              </button>
+              <button type="button" id="startup_lib_edit" onClick="startup_lib_edit()" data-i18n="[title]prefs.startup.edit_tt">
+                <span data-i18n="prefs.startup.edit"></span>
+              </button>
+              <button type="button" id="startup_lib_delete" onClick="startup_lib_delete()" data-i18n="[title]prefs.startup.del_tt">
+                <span data-i18n="prefs.startup.del"></span>
+              </button>
+            </div>
+            <label data-i18n="[title]prefs.startup.flags_tt" style="text-align: center;">
+              <span data-i18n="prefs.startup.flags"></span>
+              <br/>
+              <input type="text"
+                     id="startup_flags"
+                     name="startup_flags"
+                     style="width:17vw">
+            </label>
+          </div>
+        </div>
       </div>
 
-      <div class="array-outline">
-        <label data-i18n="[title]canvas.prop.array_outline_tt">
-          <input onchange="update_array_attr(this);"
-                 type="color"
-                 name="array_outline">
-          <span data-i18n="canvas.prop.array_outline"></span>
-        </label>
-        <br>
+      <div class="submit_buttons prefs_buttons">
+        <button type="button" onClick="ok()" data-i18n="[title]prefs.ok_tt">
+          <span data-i18n="prefs.ok"></span>
+        </button>
+        <button type="button" onClick="apply(false)" data-i18n="[title]prefs.apply_tt">
+        <span data-i18n="prefs.apply"></span>
+        </button>
+        <button type="button" onClick="cancel()" data-i18n="[title]prefs.close_tt">
+        <span data-i18n="prefs.close"></span>
+        </button>
       </div>
-
-      <div class="array_in_existing_graph">
-        <label class="array-in-existing-graph"
-               data-i18n="[title]canvas.prop.array_in_existing_graph_tt">
-          <input onchange="flag2_change(this);"
-                 type="checkbox"
-                 id="array_in_existing_graph"
-                 name="array_in_existing_graph"
-                 value="on">
-          <span data-i18n="canvas.prop.array_in_existing_graph"></span>
-        </label>
-      </div>
-
-      <div class="array_delete">
-        <label class="array-delete"
-               data-i18n="[title]canvas.prop.array_delete_tt">
-          <input onchange="array_delete_change(this);"
-                 type="checkbox"
-                 id="array_delete"
-                 name="array_delete"
-                 value="on">
-          <span data-i18n="canvas.prop.array_delete"></span>
-        </label>
-      </div>
-      </fieldset> 
-
-    <div class="submit_buttons">
-      <button type="button" id="ok_button" onClick="ok()" data-i18n="[title]iem.prop.ok_tt">
-        <span data-i18n="iem.prop.ok"></span>
-      </button>
-      <button type="button" id="apply_button" onClick="apply()" data-i18n="[title]iem.prop.apply_tt">
-        <span data-i18n="iem.prop.apply"></span>
-      </button>
-      <button type="button" onClick="cancel()" data-i18n="[title]iem.prop.close_tt">
-        <span data-i18n="iem.prop.close"></span>
-      </button>
     </div>
-
-  </form> 
-  </div>      
-
   <script>
 "use strict";
 
@@ -318,399 +491,781 @@ if (typeof(pdbundle) !== "undefined"){
 // For translations
 var l = pdgui.get_local_string;
 
-// gui preset
+// Gui presets
 pdgui.skin.apply(window);
 
 var pd_object_callback;
 
-// nested arrays of attributes for each garray
-// in this canvas
-var pd_garray_attrs;
-var new_array_dialog;
+var pd_audio_attrs;
+var pd_midi_attrs;
 
 function ok() {
-    // Put the focus on the "ok" button, to make sure we call the change
-    // method for an attribute. For some reason I don't need to do this
-    // in the iemgui dialog, but I haven't looked close to figure out why.
-    // A lot of this could probably be abstracted out, but I'm not sure of
-    // the best way to do that yet.
-    document.getElementById("ok_button").focus();
-    apply();
+    apply(true);
     cancel();
 }
 
-function toggle_fill_color(value) {
-    var fill_color_div =  document.getElementsByClassName("array-fill")[0];
-    if (value === 3) {
-        fill_color_div.classList.remove("hidden");
-    } else {
-        fill_color_div.classList.add("hidden");
-    }
+function gui_preset_change(elem) {
+    pdgui.skin.set(elem.value);
 }
 
-function flag_change(elem) {
-    var array_attr, arrays_select, name, value, flag;
-    arrays_select = document.getElementById("arrays_select");
-    array_attr = pd_garray_attrs[arrays_select.value];
-    name = elem.name;
-    // get value from radio group, checked from checkboxes
-    if (name === "array_style") {
-        value = document.querySelector('input[name="array_style"]:checked').value;
-        // Toggle visibility of the fill color button-- only show for bar
-        // graph style (= 3)
-        toggle_fill_color(+value);
-    } else {
-        // "+" for casting boolean to number
-        value = +elem.checked;
-    }
-    //pdgui.post("value is " + value);
-    flag = array_attr.array_flags;
-    switch (name) {
-        case "array_save":
-            flag &= ~1;    // clear the save bit
-            flag |= value; // set it
-            break;
-        case "array_style":
-            flag &= ~(1 << 2); // clear style bit 2...
-            flag &= ~(1 << 1); // ... and style bit 1 ...
-            flag += (2 * value); // set them
-            break;
-        case "array_jump":
-            flag &= ~(1 << 4);
-            flag += (16 * value);
-            break;
-    }
-    array_attr.array_flags = flag;
+function get_gui_preset() {
+    return document.getElementById("gui_preset").selectedOptions[0].value;
 }
 
-function flag2_change(elem) {
-    var array_attr, arrays_select, name, value, flag;
-    arrays_select = document.getElementById("arrays_select");
-    array_attr = pd_garray_attrs[arrays_select.value];
-    name = elem.name;
-    // get value from radio group, checked from checkboxes
-    // "+" for casting boolean to number
-    value = +elem.checked;
-    array_attr[name] = value;
+function get_bool_elem(elem) {
+    return +document.getElementById(elem).checked;
 }
 
-function array_delete_change(elem) {
-    var arrays_select = document.getElementById("arrays_select"),
-        array_attr = pd_garray_attrs[arrays_select.value];
-    array_attr.array_delete = elem.checked;
-}
-
-// Placeholder for updating gop margins and coords when the dialog window
-// is open. Ideally we want to keep a record of all changes so that clicking
-// "Cancel" will undo all of the changes made inside the dialog. However this
-// is non-trivial with the canvas dialog because of all the state changes
-// one can make to an array in the same dialog. For that reason we replace the
-// "Cancel" button with one called "Close".
-// The function in pdgui to update the form fields when a user drags the
-// dimensions and margins is also used for iemguis, which *do* have a "Cancel"
-// button. So we just set up a dummy function here to adhere to that interface.
-function update_attr(elem) {
-    // do nothing for now...
-}
-
-function update_array_attr(elem) {
-    var array_index, array_attr, arrays_select, name;
-    arrays_select = document.getElementById("arrays_select");
-    array_attr = pd_garray_attrs[arrays_select.value];
-    name = elem.name;
-    array_attr[name] = elem.value;
-    if (elem.name === "array-fill") {
-        // Not sure what this was for...
-        //array-fill
-    }
-}
-
-function array_choose(array_index) {
-    var i, name, value, elem, style_index, style_opts,
-        array_attr = pd_garray_attrs[array_index];
-    for (name in array_attr) {
-        if (array_attr.hasOwnProperty(name)) {
-            value = array_attr[name];
-            switch (name) {
-                case "array_gfxstub": break;
-                case "array_flags":
-                    // save contents
-                    elem = document.getElementsByName("array_save")[0];
-                    elem.checked = (value & 1) != 0;
-                    // jump on click
-                    elem = document.getElementsByName("array_jump")[0];
-                    elem.checked = (value & 16) != 0;
-                    // draw style
-                    style_opts = document.getElementsByName("array_style");
-                    style_index = (value & 6) >> 1;
-                    elem = style_opts[style_index];
-                    elem.checked = true;
-                      // hide "fill" color if we're a bar graph style (= 3)
-                    toggle_fill_color(style_index);
-                    break;
-                default:
-                    // name, size, fill, and outline
-                    //pdgui.post("name is " + name);
-                    elem = document.getElementsByName(name)[0];
-                    elem.value = value;
-                    break;
-            }
-        }
-    }
-}
-
-var arrays_select = document.getElementById("arrays_select");
-arrays_select.addEventListener("change", function(evt) {
-    array_choose(evt.target.value);
-});
-
-var gop_button = document.getElementsByName("gop")[0];
-gop_button.addEventListener("click", function(evt) {
-    set_gop(this.checked);
-});
-
-function update_gop_form(opts, state) {
-    var elem, i;
-    for(i = 0; i < opts.length; i++) {
-        elem = opts[i];
-        if (elem.type === "checkbox" ||
-            elem.type === "text") {
-            elem.disabled = state ? false : true;
-        }
-        if (state) {
-            elem.classList.remove("disabled");
-        } else {
-            elem.classList.add("disabled");
-        }
-    }
-}
-
-var gop_click_count = 0;
-
-function show_sane_defaults() {
-    var w, h, xoff, yoff;
-    w = document.getElementsByName("x_pix")[0];
-    h = document.getElementsByName("y_pix")[0];
-    xoff = document.getElementsByName("x_margin")[0];
-    yoff = document.getElementsByName("y_margin")[0];
-    if (w.value === "0" && h.value === "0") {
-        w.value = 85;
-        h.value = 60;
-        xoff.value = 100;
-        yoff.value = 100;
-    }
-    gop_click_count++;
-}
-
-function show_gop_name_and_args_checkbutton(flag) {
-    var row = document.getElementsByClassName("hide_name_row")[0];
-    row.style.setProperty("visibility", flag ? "visible" : "hidden");
-}
-
-function set_gop(state) {
-    var gop_opts, no_gop_opts;
-    if (state === true && gop_click_count === 0) {
-        show_sane_defaults();
-    }
-    gop_opts = document.getElementsByClassName("gop_opt");
-    no_gop_opts = document.getElementsByClassName("no_gop_opt");
-    update_gop_form(gop_opts, state);
-    update_gop_form(no_gop_opts, state === false);
-    // Hide or show the "hide_name" row
-    show_gop_name_and_args_checkbutton(state);
-}
-
-function substitute_space(arg) {
-    var fake_space = String.fromCharCode(11);
-    return arg.split(" ").join(fake_space);
-}
-
-function get_input(name) {
-    var elem = document.getElementsByName(name)[0];
-    return (elem.type === "checkbox") ? elem.checked : elem.value;
-}
-
-// get a value from the garray attr array
-function get_array_value(name, attrs) {
-    return attrs[name];
-}
-
-// for a new array, slot 4 is:
-//   "0" to create the array in a new graph
-//   "1" to create the array in existing graph
-// for a graph with more than one array in it, slot 4 is:
-//   "0" to do nothing
-//   "1" to delete the array when the dialog is finished
-// The deletion interface is bad, but it is also an obscure
-// feature probably not worth improving.
-function get_array_slot_4(attrs) {
-    if (new_array_dialog) {
-        return document.getElementById("array_in_existing_graph").checked ?
-            "1" : "0";
-    } else if (pd_garray_attrs.length > 1) {
-        return attrs.array_delete ? "1" : "0";
+function get_autopatch_yoffset() {
+    if (get_bool_elem("autopatch_yoffset")) {
+        return document.getElementById("autopatch_yoffset_value").value;
     } else {
         return "0";
     }
 }
 
-function apply() {
-    var gop, hide_name, slot_4;
-    // If this is a dialog to create a new array
-    // skip the canvas dialog callback
-    if (!new_array_dialog) {
-        gop = +get_input("gop");
-        hide_name = +get_input("hide_name");
+// startup config data
 
-        pdgui.pdsend(pd_object_callback, "donecanvasdialog",
-            +get_input("x_scale"),
-            +get_input("y_scale"),
-            (gop ? gop + 2 * hide_name : 0), // No hide_name bit if gop is off
-            +get_input("x1"),
-            +get_input("y1"),
-            +get_input("x2"),
-            +get_input("y2"),
-            +get_input("x_pix"),
-            +get_input("y_pix"),
-            +get_input("x_margin"),
-            +get_input("y_margin"),
-            +get_input("no_scroll"),
-            +get_input("no_menu")
-        );
+// XXXTODO: We should maybe include these in the dialog, but the startup tab
+// is already crowded enough as it is, so currently we just record them in
+// global variables and then resubmit them unchanged. Note that all of these
+// options are rarely used by the average user, and they can also be entered
+// using the startup flags field if needed.
+var startup_use_stdpath = 1;
+var startup_verbose = 0;
+var startup_defeat_rt = 0;
+
+function get_startup_flags() {
+    return pdgui.encode_for_dialog(document.getElementById("startup_flags").value);
+}
+
+// Kludge alert: The user may create invalid empty entries in the paths and
+// libs tables during editing. The easiest way to deal with these would be to
+// just ignore them, but the table editor currently won't let us do that, so
+// instead we flag them using the special text "N/A" in red. These invalid
+// entries can be checked for with the valid_startup_item function below and
+// are filtered out when submitting the data to Pd. If anyone has a better
+// idea to deal with this corner case then please be my guest. -ag
+
+function valid_startup_item(item)
+{
+    return item.textContent != "N/A" || item.style.color != "red";
+}
+
+function finalize_startup_entry(item)
+{
+    if (!item.textContent) {
+        // flag empty entry as invalid
+        item.textContent = "N/A";
+        item.style.color = "red";
     }
+}
 
-    // Now send the array properties, in a separate
-    // message for each array
-    pd_garray_attrs.forEach(function(attrs) {
-        var i;
-        name = get_array_value("array_name", attrs);
-        var arr = name.split("");
-        // This is a bit too complicated-- isn't there a standardized
-        // interface for doing this?
-        for (i = 0; i < arr.length; i++) {
-            if (arr[i] === "$" && i+1 < arr.length &&
-                arr[i+1] >= "0" && arr[i+1] <= "9") {
-                arr[i] = "#";
+function prepare_startup_entry(item)
+{
+    if (!valid_startup_item(item)) {
+        // prepare an invalid entry for editing by turning it back into an
+        // empty string
+        item.textContent = "";
+        item.style.color = "black";
+    }
+}
+
+// retrieve the path and lib lists from the corresponding tables in the dialog
+// and encode them in a form which can be safely transmitted via FUDI
+
+function get_path_array() {
+    var table = document.getElementById("startup_paths");
+    var arr = [];
+    if (table != null) {
+        for (var i = 0; i < table.rows.length; i++) {
+            var cell = table.rows[i].cells[0];
+            // filter out empty items
+            if (valid_startup_item(cell)) {
+                arr.push(pdgui.encode_for_dialog(cell.textContent));
             }
         }
-        name = arr.join("");
-        pdgui.pdsend(
-            get_array_value("array_gfxstub", attrs),
-            "arraydialog",
-            name,
-            get_array_value("array_size", attrs),
-            get_array_value("array_flags", attrs),
-            get_array_slot_4(attrs),
-            0, // xdraw-- not sure if this is still used
-            0, // ydraw-- not sure if this is still used
-            get_array_value("array_fill", attrs),
-            get_array_value("array_outline", attrs)
-        );
-    });
+    }
+    return arr;
+}
+
+function get_lib_array() {
+    var table = document.getElementById("startup_libs");
+    var arr = [];
+    if (table != null) {
+        for (var i = 0; i < table.rows.length; i++) {
+            var cell = table.rows[i].cells[0];
+            // filter out empty items
+            if (valid_startup_item(cell)) {
+                arr.push(pdgui.encode_for_dialog(cell.textContent));
+            }
+        }
+    }
+    return arr;
+}
+
+// callbacks for devices and/or their number of channels
+function dev_change(elem) {
+    var attrs, id, direction, index;
+    // the same logic works for both channels and
+    // devices-- we use the variable 'type' to
+    // choose the parameter acoordingly
+    var type, midi;
+    id = elem.id;
+    midi = id.slice(0, 4) === "midi" ? true : false;
+    direction = id.replace("midi_", "").slice(0,2) === "in" ? "in" : "out";
+    type = id.indexOf("chans") !== -1 ? "chans" : "devs";
+    // This would need to change if there could ever be more than
+    // 9 devices
+    index = +(id.slice(-1)) - 1;
+    attrs = get_attr("pd-" + direction + type,
+        midi ?  pd_midi_attrs : pd_audio_attrs);
+    attrs[index] = elem.value;
+
+    disable_unused_chans("in");
+    disable_unused_chans("out");
+}
+
+function attr_change(elem) {
+    var attr, id;
+    attr = pd_audio_attrs;
+    id = elem.id;
+    attr[attr.indexOf(id) + 1] = elem.value;
+}
+
+function alsa_ports_change(elem, type) {
+    var attr, dummy, i, len;
+    attr = pd_midi_attrs;
+    dummy = [];
+    len = Number(elem.value);
+    if (len.isNan) {
+        len = 0;
+    }
+    for (i = 0; i < len; i++) {
+        dummy.push("dummy");
+    }
+    attr[attr.indexOf("midi-" + type + "dev-names") + 1] = dummy;
+}
+
+function alsa_in_ports_change(elem) {
+    alsa_ports_change(elem, "in");
+}
+
+function alsa_out_ports_change(elem) {
+    alsa_ports_change(elem, "out");
+}
+
+function get_input(name) {
+    var val = document.getElementsByName(name)[0].value;
+    return val === 0 ? "0" : val;
+}
+
+// get a value from the garray attr array
+function get_array_value(name, attrs) {
+    return attrs[attrs.indexOf(name) + 1];
+}
+
+// If dev is -1, just change it to 0. Not sure if the Pd audio
+// backend requires this, but it's how it works currently.
+function kludge_dev(type, attrs, index) {
+    var dev = get_attr("pd-" + type + "devs", attrs)[index];
+    if (dev < 0) { dev = 0; }
+    return dev;
+}
+
+// If the device is -1 ('None'), make the number of channels negative.
+// This is the way Pd's audio backend turns off the device. (It works
+// this way so you can remember your number of channels even if
+// you turn off the device.)
+function kludge_chans(type, attrs, index) {
+    var dev = get_attr("pd-" + type + "devs", attrs)[index],
+        chans = get_attr("pd-" + type + "chans", attrs)[index];
+    if (dev < 0 && chans >= 0) { chans *= -1; }
+    return chans;
+}
+
+function apply(save_prefs) {
+    var attrs = pd_audio_attrs,
+        midi_use_alsa;
+
+    // Audio dialog
+    pdgui.pdsend(
+        "pd audio-dialog",
+        kludge_dev("in", attrs, 0),
+        kludge_dev("in", attrs, 1),
+        kludge_dev("in", attrs, 2),
+        kludge_dev("in", attrs, 3),
+        kludge_chans("in", attrs, 0),
+        kludge_chans("in", attrs, 1),
+        kludge_chans("in", attrs, 2),
+        kludge_chans("in", attrs, 3),
+        kludge_dev("out", attrs, 0),
+        kludge_dev("out", attrs, 1),
+        kludge_dev("out", attrs, 2),
+        kludge_dev("out", attrs, 3),
+        kludge_chans("out", attrs, 0),
+        kludge_chans("out", attrs, 1),
+        kludge_chans("out", attrs, 2),
+        kludge_chans("out", attrs, 3),
+        get_attr("rate", attrs),
+        get_attr("advance", attrs),
+        get_attr("cancallback", attrs),
+        get_attr("blocksize", attrs)
+    );
+
+    attrs = pd_midi_attrs;
+    midi_use_alsa = !!get_attr("use_alsa", attrs);
+    // Midi dialog
+    pdgui.pdsend(
+        "pd midi-dialog",
+        get_attr("pd-indevs", attrs)[0],
+        get_attr("pd-indevs", attrs)[1],
+        get_attr("pd-indevs", attrs)[2],
+        get_attr("pd-indevs", attrs)[3],
+        get_attr("pd-indevs", attrs)[4],
+        get_attr("pd-indevs", attrs)[5],
+        get_attr("pd-indevs", attrs)[6],
+        get_attr("pd-indevs", attrs)[7],
+        get_attr("pd-indevs", attrs)[8],
+        get_attr("pd-indevs", attrs)[9],
+        get_attr("pd-outdevs", attrs)[0],
+        get_attr("pd-outdevs", attrs)[1],
+        get_attr("pd-outdevs", attrs)[2],
+        get_attr("pd-outdevs", attrs)[3],
+        get_attr("pd-outdevs", attrs)[4],
+        get_attr("pd-outdevs", attrs)[5],
+        get_attr("pd-outdevs", attrs)[6],
+        get_attr("pd-outdevs", attrs)[7],
+        get_attr("pd-outdevs", attrs)[8],
+        get_attr("pd-outdevs", attrs)[9],
+        midi_use_alsa ? get_attr("midi-indev-names", attrs).length : 0,
+        midi_use_alsa ? get_attr("midi-outdev-names", attrs).length : 0
+    );
+
+    // Send the gui prefs (currently just the name of the gui preset, the
+    // status of the save-zoom toggle and various options related to the help
+    // browser) to Pd
+    pdgui.pdsend("pd gui-prefs",
+        get_gui_preset(),
+        get_bool_elem("save_zoom"),
+        get_bool_elem("browser_doc"),
+        get_bool_elem("browser_path"),
+        get_bool_elem("browser_init"),
+        get_autopatch_yoffset()
+    );
+
+    // Send the startup config data to Pd
+    pdgui.pdsend.apply(null, ["pd path-dialog", startup_use_stdpath, startup_verbose].concat(get_path_array()));
+    pdgui.pdsend.apply(null, ["pd startup-dialog", startup_defeat_rt, get_startup_flags()].concat(get_lib_array()));
+
+    if (save_prefs) {
+        // save the prefs in Pd...
+        pdgui.pdsend("pd save-preferences");
+    }
 }
 
 function cancel() {
     var i, attrs, gfxstub;
-    //window.close(true);
+    // There seems to be a bug in nwjs 0.13 beta3 that doesn't call the
+    // "close" event below. This has the symptom of making it impossible
+    // to click the "Ok" button and open the preferences dialog again after
+    // that. To see if the bug is gone, try removing the next line and see
+    // if you can open the Prefs dialog after clicking "Ok".
+    pdgui.remove_dialogwin(pd_object_callback);
     if(pdgui.is_webapp()){
-      remove_dialog(pd_object_callback)
+        remove_dialog(pd_object_callback)
+    }else{
+        window.close(true);
     }
+    //pdgui.pdsend(pd_object_callback, "cancel");
+}
 
-    pdgui.pdsend(pd_object_callback, "cancel");
-    for (i = 0; i < pd_garray_attrs.length; i++) {
-        attrs = pd_garray_attrs[i];
-        gfxstub = attrs.array_gfxstub;
-        pdgui.pdsend(gfxstub, "cancel");
+function change_api(elem) {
+    var id = elem.getAttribute("id"),
+        value = elem.value; // need js object property, DOM Attribute won't work
+    if (id === "audio_api") {
+        pdgui.pdsend("pd audio-setapi", value);
+    } else {
+        pdgui.pdsend("pd midi-setapi", value);
     }
 }
 
-function populate_array_form(objects) {
-    var arrays_select = document.getElementById("arrays_select"),
-        a_field = document.getElementById("arrays"),
-        opt, i;
-    a_field.classList.remove("hidden");
-    if (objects.length > 1) {
-        // show the select element if there's more than one array
-        arrays_select.classList.remove("hidden");
-    }
-    for (i = 0; i < objects.length; i++) {
+function get_attr(name, attrs) {
+    return attrs[attrs.indexOf(name) + 1];
+}
+
+function populate_apis(elem, apis, current_api) {
+    var i, opt, api_select = elem;
+    for (i = 0; i < apis.length; i += 2) {
         opt = document.createElement("option");
-        opt.setAttribute("value", i);
-        opt.textContent = "Array #" + (i+1);
-        arrays_select.appendChild(opt);
+        opt.textContent = apis[i];
+        opt.setAttribute("value", apis[i+1]);
+        api_select.appendChild(opt);
     }
-    // The "array in existing graph" interface is horrible. There should
-    // just be a button in the graph dialog to create an additional array
-    // if the user really wants to do that. Nevertheless, I just added a
-    // color key for multi-array graphs. So I guess it should be "discoverable"
-    // through this horrible interface.
-    if (!new_array_dialog) {
-        document.getElementsByClassName("array_in_existing_graph")[0]
-            .classList.add("hidden");
-    }
-    // Hide the "delete this array" button if we don't have
-    // more than one array
-    if (new_array_dialog || objects.length < 2) {
-        document.getElementsByClassName("array_delete")[0].classList.add("hidden");
-    }
-    array_choose(0);
+    api_select.value = current_api;
 }
 
-// Set up arrays in an object
-
-function init_arrays(attr_objects) {
-    if (attr_objects.length) {
-        // populate form with first array
-        populate_array_form(attr_objects);
-        // hide x1 and x2 for garrays-- they
-        // automatically get set to the array size
-        document.getElementsByName("x1")[0].disabled = true;
-        document.getElementsByName("x2")[0].disabled = true;
+function populate_devs(type, attrs) {
+    var devs = get_attr(type === "in" ? "sys-indevs" : "sys-outdevs", attrs);
+    var i, j, opt, elem, chan_elem, chans;
+    chans = get_attr("pd-" + type + "chans", attrs);
+    for (i = 0; i < 4; i++) {
+        elem = document.getElementById(type + (i+1));
+        chan_elem = document.getElementById(type + "chans" + (i+1));
+        chan_elem.value = chans[i];
+        // if the user changed the API, we need to remove the old devs
+        while (elem.firstChild) {
+            elem.removeChild(elem.firstChild);
+        }
+        // make a dummy device named 'None' with value -1
+        opt = document.createElement("option");
+        opt.value = -1;
+        opt.textContent = "None";
+        elem.appendChild(opt);
+        for (j = 0; j < devs.length; j++) {
+            opt = document.createElement("option");
+            opt.value = j;
+            opt.textContent = devs[j];
+            elem.appendChild(opt);
+        }
     }
+}
+
+function populate_midi_devs(type, attrs) {
+    var dev_names = get_attr(type === "in" ?
+        "midi-indev-names" : "midi-outdev-names", attrs);
+    var i, j, opt, elem;
+    for (i = 0; i < 10; i++) {
+        elem = document.getElementById("midi_" + type + (i+1));
+        // if the user changed the API, we need to remove the old devs
+        while (elem.firstChild) {
+            elem.removeChild(elem.firstChild);
+        }
+        // make a dummy device named 'None' with value 0
+        opt = document.createElement("option");
+        opt.value = 0;
+        opt.textContent = "None";
+        elem.appendChild(opt);
+        for (j = 0; j < dev_names.length; j++) {
+            opt = document.createElement("option");
+            opt.value = j+1;
+            opt.textContent = dev_names[j];
+            elem.appendChild(opt);
+        }
+    }
+}
+
+function disable_unused_chans(type) {
+    var i, chan_elem;
+    for (i = 0; i < 4; i++) {
+        chan_elem = document.getElementById(type + "chans" + (i+1));
+        if (+document.getElementById(type + (i+1)).value === -1) {
+            chan_elem.disabled = true;
+        } else {
+            chan_elem.disabled = false;
+        }
+    }
+}
+
+function disable_unused_devs(type, canmulti) {
+    var i;
+    if (+canmulti < 2) {
+        for (i = 0; i < 3; i++) {
+            document.getElementById(type + (i+2)).disabled = true;
+        }
+    } else {
+        for (i = 0; i < 4; i++) {
+            document.getElementById(type + (i+1)).disabled = false;
+        }
+    }
+}
+
+function audio_prefs_callback(attrs) {
+    pd_audio_attrs = attrs;
+    var api_select = document.getElementById("audio_api");
+    var callback, i, j, elem, devs, opt;
+    // We can get this callback multiple times while the dialog
+    // is open.  This is because an API change requires a query
+    // for new properties. So we only populate the api options
+    // if they don't already exist
+    if (api_select.getElementsByTagName("option").length < 1) {
+        populate_apis(
+            api_select,
+            attrs[attrs.indexOf("audio-apis") + 1],
+            attrs[attrs.indexOf("current-api") + 1]);
+    }
+
+    document.getElementById("rate").value = get_attr("rate", attrs);
+    document.getElementById("blocksize").value = get_attr("blocksize", attrs);
+    document.getElementById("advance").value = get_attr("advance", attrs);
+
+    callback = get_attr("cancallback", attrs);
+    //show the checkbox if the API allows
+    if (callback !== -1) {
+        document.getElementById("callback_container")
+            .classList.remove("hidden");
+        document.getElementById("callback").checked = !!callback;
+    }
+
+    populate_devs("in", attrs);
+    populate_devs("out", attrs);
+
+    set_devs("in", get_attr("pd-indevs", attrs));
+    set_devs("out", get_attr("pd-outdevs", attrs));
+
+    // Set chans after the devs (because they may
+    // have the side-effect of setting the dev to 'None')
+    set_chans("in", get_attr("pd-inchans", attrs));
+    set_chans("out", get_attr("pd-outchans", attrs));
+
+    disable_unused_chans("in");
+    disable_unused_chans("out");
+
+    disable_unused_devs("in", get_attr("canmulti", attrs));
+    disable_unused_devs("out", get_attr("canmulti", attrs));
+
+    pdgui.resize_window(pd_object_callback);
+}	
+window.audio_prefs_callback = audio_prefs_callback;
+
+function set_devs(type, devs) {
+    var i;
+    for (i = 0; i < devs.length; i++) {
+        document.getElementById(type + (i+1)).value = devs[i];
+    }
+}
+
+function set_chans(type, chans_array) {
+    var i;
+    for (i = 0; i < chans_array.length; i++) {
+        document.getElementById(type + "chans" + (i+1)).value = chans_array[i];
+        // If no chans, set device to -1 (None)
+        if (chans_array[i] < 1) {
+            document.getElementById(type + (i+1)).value = -1;
+        }
+    }
+}
+
+function midi_prefs_callback(attrs) {
+    pd_midi_attrs = attrs;
+    var api_select = document.getElementById("midi_api");
+
+    if (api_select.getElementsByTagName("option").length < 1) {
+        populate_apis(
+            api_select,
+            get_attr("midi-apis", attrs),
+            get_attr("current-api", attrs)
+        );
+    }
+    // If we still haven't gotten any apis, just assume that the
+    // only option is a generic "system" midi and hide the select widget.
+    // This should really be taken care of in Pd-- I don't know why, for
+    // example, it doesn't just send "MMIO" on Windows when that's the
+    // only API available...
+    if (api_select.getElementsByTagName("option").length < 1) {
+        document.getElementsByClassName("midi_api_container")[0].
+            style.setProperty("display", "none");
+    }
+    // Hide devs and only show the alsa in/out boxes. In the future
+    // we need an additional user friendly alsa interface here-- one that
+    // just lets the user pick a single input device and single output
+    // device, like LMMS does.
+    if (+get_attr("current-api", attrs) === 1) { // ALSA API
+        document.getElementsByClassName("midi_devices")[0]
+            .style.setProperty("display", "none");
+        document.getElementsByClassName("alsa_midi")[0]
+            .style.setProperty("display", "inherit");
+        // For ALSA, we just set the number of ports we want
+        // for input and output. The tcl/tk interface just reused
+        // the first of the "indevs" for this value, so (for now)
+        // we repeat that mistake here...
+        document.getElementById("alsa_in_ports").value =
+            get_attr("midi-indev-names", attrs).length;
+        document.getElementById("alsa_out_ports").value =
+            get_attr("midi-outdev-names", attrs).length;
+    } else {
+        document.getElementsByClassName("midi_devices")[0]
+            .style.setProperty("display", "inherit");
+        document.getElementsByClassName("alsa_midi")[0]
+            .style.setProperty("display", "none");
+        populate_midi_devs("in", attrs);
+        populate_midi_devs("out", attrs);
+        set_devs("midi_in", get_attr("pd-indevs", attrs));
+        set_devs("midi_out", get_attr("pd-outdevs", attrs));
+    }
+    pdgui.resize_window(pd_object_callback);
+}
+window.midi_prefs_callback = midi_prefs_callback;
+
+function autopatch_yoffset_toggle(checked) {
+    document.getElementById("autopatch_yoffset_value").disabled = !checked;
+    document.getElementById("autopatch_yoffset").checked = checked;
+}
+
+function gui_prefs_callback(name, save_zoom, browser_doc, browser_path,
+    browser_init, autopatch_yoffset) {
+    var s = document.getElementById("gui_preset"),
+        i;
+    for (i = 0; i < s.options.length; i++) {
+        if (s.options[i].value.toLowerCase() === name.toLowerCase()) {
+            s.selectedIndex = i;
+            break;
+        }
+    }
+    document.getElementById("save_zoom").checked = !!save_zoom;
+    document.getElementById("browser_doc").checked = !!browser_doc;
+    document.getElementById("browser_path").checked = !!browser_path;
+    document.getElementById("browser_init").checked = !!browser_init;
+
+    if (+autopatch_yoffset !== 0) {
+        document.getElementById("autopatch_yoffset_value").value =
+            autopatch_yoffset;
+        autopatch_yoffset_toggle(true);
+    } else {
+        autopatch_yoffset_toggle(false);
+    }
+}
+
+// startup settings
+
+function path_prefs_callback(use_stdpath, verbose, path_array) {
+    //pdgui.post("path callback: " + path_array.join("\n"));
+    // XXXTODO
+    startup_use_stdpath = use_stdpath;
+    startup_verbose = verbose;
+    var table = document.getElementById("startup_paths");
+    if (table != null) {
+        // Add the path_array elements to the table.
+        for (var i = 0; i < path_array.length; i++) {
+            var row = table.insertRow(i);
+            var cell = row.insertCell(0);
+            cell.textContent = path_array[i];
+            // install the requisite handlers
+            startup_paths_handlers(cell);
+        }
+    }
+    selected_startup_path = -1;
+    update_path_buttons();
+}
+
+function lib_prefs_callback(defeat_rt, flag_string, lib_array) {
+    //pdgui.post("lib callback: " + lib_array.join("\n"));
+    // XXXTODO
+    startup_defeat_rt = defeat_rt;
+    document.getElementById("startup_flags").value = flag_string;
+    var table = document.getElementById("startup_libs");
+    if (table != null) {
+        // Add the lib_array elements to the table.
+        for (var i = 0; i < lib_array.length; i++) {
+            var row = table.insertRow(i);
+            var cell = row.insertCell(0);
+            cell.textContent = lib_array[i];
+            // install the requisite handlers
+            startup_libs_handlers(cell);
+        }
+    }
+    selected_startup_lib = -1;
+    update_lib_buttons();
+}
+
+var selected_startup_lib = -1;
+var selected_startup_path = -1;
+
+function current_startup_lib()
+{
+    var table = document.getElementById("startup_libs");
+    return table.rows[selected_startup_lib].cells[0];
+}
+
+function current_startup_path()
+{
+    var table = document.getElementById("startup_paths");
+    return table.rows[selected_startup_path].cells[0];
+}
+
+function update_lib_buttons()
+{
+    var val = selected_startup_lib < 0;
+    var edit_button = document.getElementById("startup_lib_edit");
+    var del_button = document.getElementById("startup_lib_delete");
+    edit_button.disabled = val;
+    del_button.disabled = val;
+}
+
+function update_path_buttons()
+{
+    var val = selected_startup_path < 0;
+    var edit_button = document.getElementById("startup_path_edit");
+    var del_button = document.getElementById("startup_path_delete");
+    edit_button.disabled = val;
+    del_button.disabled = val;
+}
+
+function startup_libs_handlers(item)
+{
+    item.style = "white-space: nowrap";
+    item.onclick = function () {
+        startup_lib_click(this);
+    };
+    item.onblur = function () {
+        startup_lib_blur(this);
+    };
+}
+
+function startup_paths_handlers(item)
+{
+    item.style = "white-space: nowrap";
+    item.onclick = function () {
+        startup_path_click(this);
+    };
+    item.onblur = function () {
+        startup_path_blur(this);
+    };
+}
+
+function startup_lib_click(item) {
+    var i = item.parentElement.rowIndex;
+    if (i != selected_startup_lib) {
+        if (selected_startup_lib >= 0) {
+            current_startup_lib().style.background = "white";
+            current_startup_lib().setAttribute("contenteditable", "false");
+        }
+        item.style.background = "#ddd";
+        selected_startup_lib = i;
+    } else if (item.getAttribute("contenteditable") != "true") {
+        item.style.background = "white";
+        item.contenteditable = "false";
+        selected_startup_lib = -1;
+    }
+    update_lib_buttons();
+}
+
+function startup_lib_new() {
+    var table = document.getElementById("startup_libs");
+    var row = table.insertRow(selected_startup_lib+1);
+    var cell = row.insertCell(0);
+    startup_libs_handlers(cell);
+    startup_lib_click(cell);
+    startup_lib_edit();
+}
+
+function startup_lib_edit() {
+    if (selected_startup_lib >= 0) {
+        var item = current_startup_lib();
+        prepare_startup_entry(item);
+        item.setAttribute("contenteditable", "true");
+        item.focus();
+    }
+}
+
+function startup_lib_blur(item) {
+    // Kludge alert: Apparently we can't just remove an empty row
+    // here, so we simply flag the entry as invalid instead.
+    finalize_startup_entry(item);
+    item.setAttribute("contenteditable", "false");
+}
+
+function startup_lib_delete() {
+    if (selected_startup_lib >= 0) {
+        var table = document.getElementById("startup_libs");
+        table.deleteRow(selected_startup_lib);
+        if (selected_startup_lib < table.rows.length) {
+            // make sure that the following row is selected, which is
+            // convenient when deleting successive items
+            var item = current_startup_lib();
+            selected_startup_lib = -1;
+            startup_lib_click(item);
+        } else {
+            selected_startup_lib = -1;
+            if (table.rows.length > 0)
+                startup_lib_click(table.rows[table.rows.length-1].cells[0]);
+        }
+    }
+    update_lib_buttons();
+}
+
+function startup_path_click(item) {
+    var i = item.parentElement.rowIndex;
+    if (i != selected_startup_path) {
+        if (selected_startup_path >= 0) {
+            current_startup_path().style.background = "white";
+            current_startup_path().setAttribute("contenteditable", "false");
+        }
+        item.style.background = "#ddd";
+        selected_startup_path = i;
+    } else if (item.getAttribute("contenteditable") != "true") {
+        item.style.background = "white";
+        item.contenteditable = "false";
+        selected_startup_path = -1;
+    }
+    update_path_buttons();
+}
+
+function startup_path_new() {
+    var table = document.getElementById("startup_paths");
+    var row = table.insertRow(selected_startup_path+1);
+    var cell = row.insertCell(0);
+    startup_paths_handlers(cell);
+    startup_path_click(cell);
+    startup_path_edit();
+}
+
+function startup_path_edit() {
+    if (selected_startup_path >= 0) {
+        var item = current_startup_path();
+        prepare_startup_entry(item);
+        item.setAttribute("contenteditable", "true");
+        item.focus();
+    }
+}
+
+function startup_path_blur(item) {
+    // Kludge alert: Apparently we can't just remove an empty row
+    // here, so we simply flag the entry as invalid instead.
+    finalize_startup_entry(item);
+    item.setAttribute("contenteditable", "false");
+}
+
+function startup_path_delete() {
+    if (selected_startup_path >= 0) {
+        var table = document.getElementById("startup_paths");
+        table.deleteRow(selected_startup_path);
+        if (selected_startup_path < table.rows.length) {
+            // make sure that the following row is selected, which is
+            // convenient when deleting successive items
+            var item = current_startup_path();
+            selected_startup_path = -1;
+            startup_path_click(item);
+        } else {
+            selected_startup_path = -1;
+            if (table.rows.length > 0)
+                startup_path_click(table.rows[table.rows.length-1].cells[0]);
+        }
+    }
+    update_path_buttons();
 }
 
 // This gets called from the nw_create_window function in index.html
 // It provides us with our window id from the C side.  Once we have it
 // we can create the menu and register event callbacks
-function register_window_id(gfxstub, attr_objects) {
+function register_window_id(gfxstub, attr_arrays) {
     pd_object_callback = gfxstub;
-    var canvas_fieldsets, i, prop;
-    // attr_objects[0]: canvas properties
-    // attr_objects[1...n-1]: array properties
     add_events(gfxstub);
-    // not sure that we need this for properties windows...
-    // pdgui.canvas_map(gfxstub);
     translate_form();
-    // If this is a new array dialog we might not have any canvas
-    // properties to set. If so, just show the array form elements
-    if (attr_objects[0].hasOwnProperty("array_gfxstub")) {
-        pd_garray_attrs = attr_objects;
-        new_array_dialog = true; // this is a new array dialog
-        canvas_fieldsets = document.getElementsByClassName("canvas");
-        for (i = 0; i < canvas_fieldsets.length; i++) {
-            canvas_fieldsets[i].classList.add("hidden");
-        }
-        // Hide the "Apply" button, as it doesn't make sense for
-        // creating a new array
-        document.getElementById("apply_button").style.setProperty("display",
-            "none");
-    } else {
-        pd_garray_attrs = attr_objects.slice(1);
-        new_array_dialog = false; // this is a canvas/array props dialog
-        populate_form(attr_objects[0]);
-    }
-        init_arrays(pd_garray_attrs);
 
-    // Disabling the menus does not yet work, so we hide that button for
-    // the moment
-    document.getElementsByClassName("no_menu")[0].style.setProperty("display",
-        "none");
     // We don't turn on rendering of the "container" div until
     // We've finished displaying all the spans and populating the
-    // labels and form elements.  That makes it snappier, at least
-    // on older machines.
+    // labels and form elements.  That makes it more efficient and
+    // snappier, at least on older machines.  However, we still have
+    // to asynchronously request the form values from Pd for audio
+    // and MIDI...
+
+    pdgui.pdsend("pd audio-properties"); // request audio pref attrs
+    pdgui.pdsend("pd midi-properties");  // request midi pref attrs
+    pdgui.pdsend("pd gui-properties");   // request saved gui properties
+    pdgui.pdsend("pd start-path-dialog"); // request default system paths
+    pdgui.pdsend("pd start-startup-dialog"); // request default loaded libs
     document.getElementsByClassName("container")[0].style.setProperty("display", "inline");
-    pdgui.resize_window(pd_object_callback);
 }
 window.register_dialog = register_window_id;
 
@@ -721,10 +1276,11 @@ function tr_text(id) {
 
 // Stop-gap translator
 function translate_form() {
-    var i
-    var elements = document.querySelectorAll("[data-i18n]");
+    var elements = document.querySelectorAll("[data-i18n]"),
+        data,
+        i;
     for (i = 0; i < elements.length; i++) {
-        var data = elements[i].dataset.i18n;
+        data = elements[i].dataset.i18n;
         if (data.slice(0,7) === "[title]") {
             elements[i].title = l(data.slice(7));
         } else {
@@ -733,74 +1289,42 @@ function translate_form() {
     }
 }
 
-function populate_form(attr_object) {
-    var prop;
-    for (prop in attr_object) {
-        if (attr_object.hasOwnProperty(prop)) {
-            // Unhide the span with the class with the same name as the id
-            var prop_group = document.getElementsByClassName(prop)[0];
-            if (prop_group !== undefined) {
-                prop_group.classList.remove("hidden");
-            }
-            if (prop === "display_flags") {
-                // reminder: "!!" forces Boolean, "+" forces Number type
-                var flag = +attr_object[prop];
-                document.getElementsByName("gop")[0].checked = !!flag;
-                document.getElementsByName("hide_name")[0].checked = !!(flag & 2);
-                // set visibility of the "hide_name" checkbox based on
-                // the gop flag. This way users don't get the idea that it
-                // can be set independently of gop.
-                show_gop_name_and_args_checkbutton(!!flag);
-                // Set the gop-related parts of the form to be
-                // enabled/disabled based on state
-                set_gop(!!flag);
-            }
-            var elem = document.getElementsByName(prop);
-            if (elem.length > 0) {
-                if(prop.slice(-5) === "color") {
-                    var hex_string = Number(attr_object[prop]).toString(16);
-                    var color_string = "#" +
-                        (hex_string === "0" ? "000000" : hex_string);
-                    elem[0].value = color_string;
-                } else if (elem[0].type === "checkbox") {
-                    // The attr here is a string, so we need to
-                    // force it to number, hence the "+" below
-                    elem[0].checked = +attr_object[prop];
-                } else {
-                    elem[0].value = attr_object[prop];
-                }
+function populate_form(attr_array) {
+    // First, let's put the translated text for the form labels:
+    var i;
+    for(i = 0; i < attr_array.length; i+=2) {
+        // Unhide the span with the class with the same name as the id
+        var prop_group = document.getElementsByClassName(attr_array[i])[0];
+        if (prop_group !== undefined) {
+            console.log("the thing here is " + attr_array[i]);
+            prop_group.classList.remove("hidden");
+        } else {
+            pdgui.post("Error: couldn't find iemgui prop group for " + attr_array[i]);
+        }
+
+        var elem = document.getElementsByName(attr_array[i]);
+        if (elem.length > 0) {
+            if (elem[0].type === "checkbox") {
+                // The attr here is a string, so we need to
+                // force it to number, hence the "+" below
+                elem[0].checked = +attr_array[i+1];
+            } else {
+                elem[0].value = attr_array[i+1];
             }
         }
-    }
-    // Some special cases for hiding options for garray dialogs
-    if (pd_garray_attrs.length > 0) {
-        // Graph-on-parent toggle
-        document.getElementsByClassName("display_flags")[0]
-            .classList.add("hidden");
-        // Graph-on-parent flag for hiding object name/args
-        document.getElementsByClassName("display_flags")[1]
-            .classList.add("hidden");
-        // GOP-rect margins don't make sense for garrays, so hide them
-        document.getElementsByClassName("x_margin")[0]
-            .classList.add("hidden");
-        // X/Y scaling-- garray is always in a gop so not needed
-        document.getElementsByClassName("x_scale")[0]
-            .classList.add("hidden");
-        // scrollbars and menu
-        document.getElementsByClassName("no_scroll")[0]
-            .classList.add("hidden");
-         document.getElementsByClassName("no_menu")[0]
-            .classList.add("hidden");
     }
 }
 
 function add_events(name) {
+    // let's handle some events for this window...
+
     // closing the Window
     if(!pdgui.is_webapp()){
-      gui.Window.get().on("close", function() {
-        // this needs to do whatever the "cancel" button does
-        cancel();
-      });
+        gui.Window.get().on("close", function() {
+            pdgui.remove_dialogwin(pd_object_callback);
+            gui.Window.get().close(true);
+            //cancel();
+        });
     }
     pdgui.dialog_bindings(name);
 }
