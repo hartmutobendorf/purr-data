@@ -1191,7 +1191,16 @@ function gui_quit_dialog() {
 function menu_send(name) {
     var message,
         win = name ? patchwin[name] : pd_window;
-    message = win.window.prompt("Type a message to send to Pd", name);
+    if (name) {
+        $("#pd-option").prop("checked", true);
+    } else {
+        $("#canvas-option").prop("checked", true);
+    }
+    $("#message-modal").modal("show");
+    $("#send-message-btn").click(function() {
+        message = $("#message-text").val();
+        $("#message-modal").modal("hide");
+    });
     if (message != undefined && message.length) {
         post("Sending message to Pd: " + message + ";");
         pdsend(message);
