@@ -1197,14 +1197,15 @@ function menu_send(name) {
         $("#canvas-option").prop("checked", true);
     }
     $("#message-modal").modal("show");
-    $("#send-message-btn").click(function() {
+    $("#send-message-btn").on("click", function() {
         message = $("#message-text").val();
+        $("#message-text").val("");
         $("#message-modal").modal("hide");
+        if (message != undefined && message.length) {
+            post("Sending message to Pd: " + message + ";");
+            pdsend(message);
+        }
     });
-    if (message != undefined && message.length) {
-        post("Sending message to Pd: " + message + ";");
-        pdsend(message);
-    }
 }
 
 // requires nw.js API (Menuitem)
