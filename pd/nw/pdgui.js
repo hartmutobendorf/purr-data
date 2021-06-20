@@ -1189,23 +1189,27 @@ function gui_quit_dialog() {
 
 // send a message to Pd
 function menu_send(name) {
-    var message,
-        win = name ? patchwin[name] : pd_window;
-    if (name) {
-        $("#pd-option").prop("checked", true);
-    } else {
-        $("#canvas-option").prop("checked", true);
-    }
-    $("#message-modal").modal("show");
-    $("#send-message-btn").on("click", function() {
-        message = $("#message-text").val();
-        $("#message-text").val("");
-        $("#message-modal").modal("hide");
+    if (is_webapp) {
+        $("#message-modal").modal("show");
+        $("#message-text").val(name);
+        $("#send-message-btn").click(function() {
+        var message = $("#message-text").val();
         if (message != undefined && message.length) {
             post("Sending message to Pd: " + message + ";");
             pdsend(message);
         }
+        $("#message-text").val("");
+        $("#message-modal").modal("hide");
     });
+    } else {
+        var message,
+        win = name ? patchwin[name] : pd_window;
+        message = win.window.prompt("Type a message to send to Pd", name);
+        if (message != undefined && message.length) {
+        post("Sending message to Pd: " + message + ";");
+        pdsend(message);
+        }
+    }
 }
 
 // requires nw.js API (Menuitem)
