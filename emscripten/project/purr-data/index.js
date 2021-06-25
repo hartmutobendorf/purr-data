@@ -60,9 +60,10 @@ function create_window(cid, type, width, height, xpos, ypos, attr_array) {
 
                 $("#dialog-body").prepend(dialog_div.outerHTML)
                 $("#dialog-div").prepend(data)
-
+                if (f === "dialog_canvas.html") {
+                    $("#dialog-title").text("Canvas Properties");
+                }
                 $("#dialog-modal").modal("show");
-
                 // initialize the dialog window                
                 register_dialog(cid,attr_array);
             });
