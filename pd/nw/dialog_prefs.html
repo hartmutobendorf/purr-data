@@ -774,6 +774,7 @@ function cancel() {
     pdgui.remove_dialogwin(pd_object_callback);
     if(pdgui.is_webapp()){
         remove_dialog(pd_object_callback)
+        $("#dialog-modal").modal("hide");
     }else{
         window.close(true);
     }

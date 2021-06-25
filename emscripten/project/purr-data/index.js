@@ -58,9 +58,14 @@ function create_window(cid, type, width, height, xpos, ypos, attr_array) {
                 // cleaning dialog div
                 dialog_div.innerHTML = "";
 
-                $("#sidebar-body-dialog").prepend(dialog_div.outerHTML)
+                $("#dialog-body").prepend(dialog_div.outerHTML)
                 $("#dialog-div").prepend(data)
-
+                if (f === "dialog_canvas.html") {
+                    $("#dialog-title").text("Canvas Properties");
+                } else if (f === "dialog_prefs.html") {
+                    $("#dialog-title").text("Pd-L2Ork Properties");
+                }
+                $("#dialog-modal").modal("show");
                 // initialize the dialog window                
                 register_dialog(cid,attr_array);
             });
