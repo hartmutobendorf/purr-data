@@ -60,7 +60,7 @@ function create_window(cid, type, width, height, xpos, ypos, attr_array) {
 
                 $("#dialog-body").prepend(dialog_div.outerHTML)
                 $("#dialog-div").prepend(data)
-                if (f === "dialog_canvas.html") {
+                if (f === "dialog_canvas.html" || f === "dialog_iemgui.html") {
                     $("#dialog-title").text("Canvas Properties");
                 }
                 $("#dialog-modal").modal("show");
