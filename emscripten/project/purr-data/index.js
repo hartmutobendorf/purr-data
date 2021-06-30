@@ -60,9 +60,14 @@ function create_window(cid, type, width, height, xpos, ypos, attr_array) {
 
                 $("#dialog-body").prepend(dialog_div.outerHTML)
                 $("#dialog-div").prepend(data)
-                if (f === "dialog_canvas.html" || f === "dialog_iemgui.html") {
-                    $("#dialog-title").text("Canvas Properties");
-                }
+                var props_map = {
+                    "dialog_canvas.html": "Canvas",
+                    "dialog_iemgui.html": "Iemgui",
+                    "dialog_gatom.html": "Atom",
+                    "dialog_font.html": "Font"
+                };
+                $("#dialog-title").text(props_map[f] + " Properties");
+                
                 $("#dialog-modal").modal("show");
                 // initialize the dialog window                
                 register_dialog(cid,attr_array);
