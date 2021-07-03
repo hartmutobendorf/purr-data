@@ -773,7 +773,6 @@ function cancel() {
     // if you can open the Prefs dialog after clicking "Ok".
     pdgui.remove_dialogwin(pd_object_callback);
     if(pdgui.is_webapp()){
-        remove_dialog(pd_object_callback)
         $("#dialog-modal").modal("hide");
     }else{
         window.close(true);
@@ -1328,6 +1327,12 @@ function add_events(name) {
         });
     }
     pdgui.dialog_bindings(name);
+    if (pdgui.is_webapp) {
+      $("#dialog-modal").on("hidden.bs.modal", function (e) {
+        remove_dialog(pd_object_callback)
+        $("#dialog-modal").off("hidden.bs.modal")
+      })
+    }
 }
 
   </script>
