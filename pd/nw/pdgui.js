@@ -1192,15 +1192,6 @@ function menu_send(name) {
     if (is_webapp) {
         $("#message-modal").modal("show");
         $("#message-text").val(name);
-        $("#send-message-btn").click(function() {
-        var message = $("#message-text").val();
-        if (message != undefined && message.length) {
-            post("Sending message to Pd: " + message + ";");
-            pdsend(message);
-        }
-        $("#message-text").val("");
-        $("#message-modal").modal("hide");
-    });
     } else {
         var message,
         win = name ? patchwin[name] : pd_window;
@@ -1211,6 +1202,19 @@ function menu_send(name) {
         }
     }
 }
+
+function web_menu_send() {
+    var message = $("#message-text").val();
+    console.log("Message", typeof(message));
+    if (message != undefined && message.length) {
+        post("Sending message to Pd: " + message + ";");
+        pdsend(message);
+    }
+    $("#message-text").val("");
+    $("#message-modal").modal("hide");
+}
+
+exports.web_menu_send = web_menu_send;
 
 // requires nw.js API (Menuitem)
 function canvas_set_editmode(cid, state) {
