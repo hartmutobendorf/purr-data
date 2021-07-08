@@ -1190,6 +1190,8 @@ function gui_quit_dialog() {
 // send a message to Pd
 function menu_send(name) {
     if (is_webapp) {
+        $(".editmode").removeClass("editmode");
+        $('[id*="editmode"]').prop('checked', false);
         $("#message-modal").modal("show");
         $("#message-text").val(name);
     } else {
@@ -1205,7 +1207,6 @@ function menu_send(name) {
 
 function web_menu_send() {
     var message = $("#message-text").val();
-    console.log("Message", typeof(message));
     if (message != undefined && message.length) {
         post("Sending message to Pd: " + message + ";");
         pdsend(message);
