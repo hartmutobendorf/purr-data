@@ -680,7 +680,8 @@ window.modifiers = function (menu_item, modifiers) {
 }
 
 window.tooltip = function (menu_item, tooltip) {
-    // console.log("NEED TO IMPLEMENT TOOLTIP", tooltip);
+    menu_item.setAttribute("data-toggle", "tooltip");
+    menu_item.setAttribute("title", tooltip);
 }
 
 window.recent_files = function (elem) {
