@@ -128,7 +128,7 @@ function load_menu_actions(){
     // Help entries
     minit("help-about", {onclick:
         function(){
-            pdbundle.pdgui.web_pd_doc_open("doc/about", "about.pd")
+            pdbundle.pdgui.web_external_doc_open("https://agraef.github.io/purr-data-intro/Purr-Data-Intro.html")
         }
     });
 
