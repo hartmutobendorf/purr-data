@@ -323,6 +323,14 @@ li .hr{
     overflow: auto;
 }
 
+*[unselectable="on"] {
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+ }
+
 /* Bootstrap */	
 .container-fluid{	
     background-color: transparent;
