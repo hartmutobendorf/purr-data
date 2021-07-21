@@ -107,15 +107,6 @@ function menu_options(type, w, cid) {
                 onclick: function () { menu_section_click("menu-view" + cid) },
                 onmousemove: function () { menu_section_move("menu-view" + cid) }
             }
-        },
-
-        // View entries
-        "view-fullscreen": {
-            label: l("menu.fullscreen"),
-            key: pdbundle.shortcuts.menu.fullscreen_web.key,
-            modifiers: pdbundle.shortcuts.menu.fullscreen_web.modifiers,
-            tooltip: l("menu.fullscreen_tt"),
-            top_hr: {}
         }
     }
 
@@ -185,10 +176,6 @@ function menu_options(type, w, cid) {
             modifiers: pdbundle.shortcuts.menu.preferences_web.modifiers,
             tooltip: l("menu.preferences_tt")
         },
-
-        // View
-        ...view_base,
-
         // Media section
         "menu-media": {
             label: l("menu.media"),
@@ -417,6 +404,8 @@ function menu_options(type, w, cid) {
         },
 
         // View section
+        ...view_base,
+        // View entries
         "view-zoomreset": {
             label: l("menu.zoomreset"),
             key: pdbundle.shortcuts.menu.zoomreset_web.key,
@@ -436,9 +425,13 @@ function menu_options(type, w, cid) {
             modifiers: pdbundle.shortcuts.menu.zoomout_web.modifiers,
             tooltip: l("menu.zoomout_tt")
         },
-        ...view_base,
-
-        // View entries
+        "view-fullscreen": {
+            label: l("menu.fullscreen"),
+            key: pdbundle.shortcuts.menu.fullscreen_web.key,
+            modifiers: pdbundle.shortcuts.menu.fullscreen_web.modifiers,
+            tooltip: l("menu.fullscreen_tt"),
+            top_hr: {}
+        },
         "view-optimalzoom": {
             label: l("menu.zoomoptimal"),
             key: pdbundle.shortcuts.menu.zoomoptimal_web.key,
