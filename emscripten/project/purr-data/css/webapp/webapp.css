@@ -310,8 +310,10 @@ li .hr{
 }
 
 .patch-filename{
-    margin-top: 10px;
-    margin-bottom: 5px;
+    margin: 0;
+    padding-top: 10px;
+    padding-bottom: 5px;
+    cursor: move;
 }
 
 #div-svg-p{	
