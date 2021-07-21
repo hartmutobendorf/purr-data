@@ -1197,14 +1197,33 @@ function gui_quit_dialog() {
 
 // send a message to Pd
 function menu_send(name) {
-    var message,
+    if (is_webapp) {
+        $(".editmode").removeClass("editmode");
+        $('[id*="editmode"]').prop('checked', false);
+        $("#message-modal").modal("show");
+        $("#message-text").val(name);
+    } else {
+        var message,
         win = name ? patchwin[name] : pd_window;
-    message = win.window.prompt("Type a message to send to Pd", name);
+        message = win.window.prompt("Type a message to send to Pd", name);
+        if (message != undefined && message.length) {
+        post("Sending message to Pd: " + message + ";");
+        pdsend(message);
+        }
+    }
+}
+
+function web_menu_send() {
+    var message = $("#message-text").val();
     if (message != undefined && message.length) {
         post("Sending message to Pd: " + message + ";");
         pdsend(message);
     }
+    $("#message-text").val("");
+    $("#message-modal").modal("hide");
 }
+
+exports.web_menu_send = web_menu_send;
 
 // requires nw.js API (Menuitem)
 function canvas_set_editmode(cid, state) {
