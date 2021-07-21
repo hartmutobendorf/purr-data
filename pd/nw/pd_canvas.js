@@ -2149,6 +2149,9 @@ function load_canvas_menu_actions(name, filename){
     minit("file-close"+name, {
         onclick: function() { pdgui.menu_close(name); }
     });
+    minit("close-canvas"+name, {
+        onclick: function() { pdgui.menu_close(name); }
+    });
     
 
     // Edit entries

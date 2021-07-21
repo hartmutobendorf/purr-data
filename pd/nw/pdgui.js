@@ -12,8 +12,16 @@ function is_webapp(){
     }
     return true;
 }
+
 exports.is_webapp = is_webapp;
 
+if (is_webapp()) {
+    if (navigator.platform.toUpperCase().indexOf("MAC") > -1) {
+        process.platform = "darwin";
+    } else if (navigator.platform.toUpperCase().indexOf("WIN") > -1) {
+        process.platform = "win32";
+    }
+}
 
 exports.set_pwd = function(pwd_string) {
     pwd = pwd_string;
@@ -1189,14 +1197,33 @@ function gui_quit_dialog() {
 
 // send a message to Pd
 function menu_send(name) {
-    var message,
+    if (is_webapp) {
+        $(".editmode").removeClass("editmode");
+        $('[id*="editmode"]').prop('checked', false);
+        $("#message-modal").modal("show");
+        $("#message-text").val(name);
+    } else {
+        var message,
         win = name ? patchwin[name] : pd_window;
-    message = win.window.prompt("Type a message to send to Pd", name);
+        message = win.window.prompt("Type a message to send to Pd", name);
+        if (message != undefined && message.length) {
+        post("Sending message to Pd: " + message + ";");
+        pdsend(message);
+        }
+    }
+}
+
+function web_menu_send() {
+    var message = $("#message-text").val();
     if (message != undefined && message.length) {
         post("Sending message to Pd: " + message + ";");
         pdsend(message);
     }
+    $("#message-text").val("");
+    $("#message-modal").modal("hide");
 }
+
+exports.web_menu_send = web_menu_send;
 
 // requires nw.js API (Menuitem)
 function canvas_set_editmode(cid, state) {
@@ -2035,6 +2062,25 @@ function upload_patch(files) {
         return;
     }
 
+    var fileInput = document.getElementById("uploadPatch");
+    var allowedExtension = ".pd";
+
+    // Check that the file extension is supported.
+    // If not, clear the input.
+    var hasInvalidFiles = false;
+    for (var i = 0; i < files.length; i++) {
+        var file = files[i];
+        
+        if (!file.name.endsWith(allowedExtension)) {
+        hasInvalidFiles = true;
+        }
+    }
+    
+    if(hasInvalidFiles) {
+        fileInput.value = ""; 
+        alert("Unsupported file selected.");
+    }
+
     for (const file of files){
         var reader = new FileReader();
         reader.onload = function () {
@@ -2103,6 +2149,23 @@ function download_patch(file_name) {
 
 exports.download_patch = download_patch;
 
+function delete_file(file_name) {
+    FS.unlink(workspace+file_name, function(err) {
+        console.log(err);
+    });
+    update_file_ls();
+}
+
+function edit_file_name(file_name) {
+    var new_name = prompt("Enter new file name", file_name);  
+    if (new_name != null) {
+        FS.rename(workspace+file_name, workspace+new_name, function(err) {
+            console.log(err);
+        });
+        update_file_ls();
+    }
+}
+
 function update_file_ls(){
     var file_ls = window.document.getElementById("file_ls");
     file_ls.innerHTML = "";
@@ -2111,18 +2174,33 @@ function update_file_ls(){
     for (const file of FS.readdir(workspace)){
         var mode = FS.stat(workspace+file).mode;
         if(FS.isFile(mode)){
+            var list_item = window.document.createElement("div");
+            var icons = window.document.createElement("div");
             var li = window.document.createElement("li");
             var a = window.document.createElement("a");
+            var edit_icon = window.document.createElement("i");
+            edit_icon.classList.add("fa", "fa-pencil", "text-primary", "edit");
+            var trash_icon = window.document.createElement("i");
+            trash_icon.classList.add("fa", "fa-trash", "text-primary", "delete");
+            icons.setAttribute("id", "file-icons");
+            list_item.classList.add("d-flex", "justify-content-between");
+            list_item.setAttribute("id", "list-item");
             // Add name of file
-            a.append("./"+file);
+            a.append(file);
     
             // Add open button
             a.onclick = function(){open_patch(file)};
+            trash_icon.onclick = function(){delete_file(file)};
+            edit_icon.onclick = function(){edit_file_name(file)};
             li.append(a);
-            li.classList.add("d-block");
-            li.classList.add("text-truncate");
-            li.style.maxWidth = "150px";
-            file_ls.append(li);
+            li.classList.add("d-inline-block", "text-truncate");
+
+            //append elements
+            list_item.append(li);
+            icons.append(edit_icon);
+            icons.append(trash_icon);
+            list_item.append(icons);
+            file_ls.append(list_item);
             files_added = files_added + 1;
         }
     }

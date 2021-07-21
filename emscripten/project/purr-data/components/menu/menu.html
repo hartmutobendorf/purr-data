@@ -8,7 +8,7 @@
                     <label>
                         <li id="file-open">
                         </li>
-                        <input id="uploadPatch" type="file" onchange="pdbundle.pdgui.upload_patch(this.files)" multiple>
+                        <input id="uploadPatch" type="file" accept=".pd" onchange="pdbundle.pdgui.upload_patch(this.files)" multiple>
                     </label>
 
                     <!-- Recent Files submenu -->
@@ -32,14 +32,6 @@
                     <li id="edit-preferences"></li>
                 </ul>
             </li>
-
-            <!-- View Section -->
-            <li id="menu-view">
-                <ul class="rounded shadow">
-                    <li id="view-fullscreen"></li>
-                </ul>
-            </li>
-
 
             <!-- Media section -->
             <li id="menu-media">
