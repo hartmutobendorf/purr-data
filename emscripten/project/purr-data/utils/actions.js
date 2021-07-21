@@ -220,6 +220,7 @@ function add_shortcuts(cid){
     document.onkeydown = function (e){
         // Check modifiers
         var shortcut = e.ctrlKey ? "Ctrl+": "";
+        shortcut += e.metaKey ? "Cmd+": "";
         shortcut += e.shiftKey ? "Shift+": "";
         shortcut += e.altKey ? "Alt+": "";
         // Add key
