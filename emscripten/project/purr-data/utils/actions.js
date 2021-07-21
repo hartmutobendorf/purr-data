@@ -52,6 +52,38 @@ function load_menu_actions(){
         }
     });
 
+    minit("cons_copy", {
+        onclick: function() {
+            var text = "";
+            if (window.getSelection) {
+                text = window.getSelection().toString();
+            } else if (document.selection && document.selection.type != "Control") {
+                text = document.selection.createRange().text;
+            }
+            if (text.length === 0) {
+                var container_id = "p1", range;
+                // This should work across browsers
+                if (window.document.selection) {
+                    range = window.document.body.createTextRange();
+                    range.moveToElementText(window.document.getElementById(container_id));
+                    range.select();
+                } else if (window.getSelection) {
+                    range = window.document.createRange();
+                    range.selectNode(window.document.getElementById(container_id));
+                    // we need to empty the current selection to avoid a strange
+                    // error when trying to select all right after Pd starts:
+                    // "The given range and the current selection belong to two
+                    //  different document fragments."
+                    // (I guess nw.js somehow starts up with the selection being
+                    // somewhere outside the window...)
+                    window.getSelection().empty();
+                    window.getSelection().addRange(range);
+                }
+            }
+            window.document.execCommand("copy");
+        }
+    });
+
     minit("edit-find", {
         onclick: function() {
             var find_bar = window.document.getElementById("console_find"),
@@ -91,6 +123,18 @@ function load_menu_actions(){
         }
     });
 
+    minit("find_below", {
+        onclick: function() {
+            console_find_below()
+        }
+    });
+
+    minit("find_above", {
+        onclick: function() {
+            console_find_above()
+        }
+    });
+    
     // View entries
 
     minit("view-fullscreen",{onclick: 
@@ -128,7 +172,7 @@ function load_menu_actions(){
     // Help entries
     minit("help-about", {onclick:
         function(){
-            pdbundle.pdgui.web_pd_doc_open("doc/about", "about.pd")
+            pdbundle.pdgui.web_external_doc_open("https://agraef.github.io/purr-data-intro/Purr-Data-Intro.html")
         }
     });
 
@@ -176,6 +220,7 @@ function add_shortcuts(cid){
     document.onkeydown = function (e){
         // Check modifiers
         var shortcut = e.ctrlKey ? "Ctrl+": "";
+        shortcut += e.metaKey ? "Cmd+": "";
         shortcut += e.shiftKey ? "Shift+": "";
         shortcut += e.altKey ? "Alt+": "";
         // Add key

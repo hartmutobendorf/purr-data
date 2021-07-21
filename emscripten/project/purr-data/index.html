@@ -45,6 +45,30 @@
         </div>
       </div>
     </div> 
+    <div class="modal fade" id="message-modal" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">New message</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <label for="message-text" class="col-form-label">Message:</label>
+                <textarea class="form-control" id="message-text"></textarea>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" id="send-message-btn" class="btn btn-primary" onclick="pdbundle.pdgui.web_menu_send()">Send message</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <div id="container-app" class="container-fluid">
       <!-- Menu -->
@@ -116,6 +140,8 @@
 
               <div class="console-find-webapp" id="console_find" style="display: none;">
                 <div class="d-flex justify-content-end align-items-center">
+                  <i class="fa fa-long-arrow-up text-primary" id="find_above" style="cursor: pointer;"></i>
+                  <i class="fa fa-long-arrow-down text-primary" id="find_below" style="cursor: pointer;"></i>
                   <label><input type="text" id="console_find_text" name="console_find_text" defaultValue="Search in Console" style="width: 15em;" placeholder="Search in Console" /> </label>
                   <label class="highlight-find d-flex align-items-center">
                     Highlight All
@@ -123,8 +149,10 @@
                   </label>
                 </div>
               </div>
-
-              <i class='fa fa-trash ml-3 text-primary' style='cursor:pointer' id='clear' data-toggle="tooltip" title="Clear Console"></i>
+              <div>
+                <i class="fa fa-clone text-primary" id="cons_copy" unselectable="on" style="cursor: pointer;" data-toggle="tooltip" title="Copy Console"></i>
+                <i class='fa fa-trash ml-3 text-primary' style='cursor:pointer' id='clear' data-toggle="tooltip" title="Clear Console"></i>
+              </div>
             </div>
 
             <div class="collapse show" id="console_bottom">
@@ -534,11 +562,11 @@
 
       // Add pd module to pd
 
-      //Clear Console
-      document.getElementById("clear").addEventListener("click",()=>{
-        document.getElementById('p1').innerHTML='';
-  
-      })
+      // Clear Console
+      document.getElementById("clear").addEventListener("click", function() {
+      document.getElementById("p1").innerHTML="";
+      });
+
     </script>
 
     <!-- Pd Bundle -->
@@ -600,6 +628,19 @@
         });
       });
     </script>
+
+<script>
+  $(document).ready(function(){
+    // Rearrangable patches
+    $("#canvas-container").sortable({
+      axis: "x",
+      cursor: "move",
+      handle: ".patch-filename",
+      scroll: false,
+      revert: true,
+    });
+  });
+</script>
 
   </body>
 </html>
