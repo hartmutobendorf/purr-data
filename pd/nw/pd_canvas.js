@@ -494,7 +494,6 @@ var canvas_events = (function() {
                 return false;
             },
             text_keydown: function(evt) {
-                console.log("keypressed");
                 if (pdgui.is_webapp()) { // temporary fix
                     if (pdgui.cmd_or_ctrl_key(evt)) {
                         return false;
