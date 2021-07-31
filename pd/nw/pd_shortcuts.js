@@ -82,7 +82,7 @@ exports.menu = {
   "undo_web":   { key: "Z", modifiers: cmd_or_ctrl },
   "redo_web":   { key: "Z", modifiers: cmd_or_ctrl + "+Shift" },
   "selectall_web":{ key: "Q", modifiers: cmd_or_ctrl + "+Shift"},
-  "cut_web":    { key: "X", modifiers: cmd_or_ctrl + "+Shift" },
+  "cut_web":    { key: "X", modifiers: cmd_or_ctrl },
   "copy_web":   { key: "C", modifiers: cmd_or_ctrl },
   "paste_web":  { key: "V", modifiers: cmd_or_ctrl },
   "paste_clipboard_web": { key: "G", modifiers: cmd_or_ctrl + "+Shift" },
@@ -94,7 +94,7 @@ exports.menu = {
   "cordinspector_web":   { key: "R", modifiers: cmd_or_ctrl + "+Shift" },
   "find_web":   { key: "F", modifiers: cmd_or_ctrl },
   "findagain_web":{ key: "F", modifiers: cmd_or_ctrl + "+Shift"},
-  "editmode_web": { key: "E", modifiers: cmd_or_ctrl + "+Shift" },
+  "editmode_web": { key: "E", modifiers: cmd_or_ctrl },
   "preferences_web": { key: (process.platform === "darwin") ? "," : "P",
     modifiers: cmd_or_ctrl },
 
