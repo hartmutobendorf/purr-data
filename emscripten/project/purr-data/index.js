@@ -61,6 +61,7 @@ function create_window(cid, type, width, height, xpos, ypos, attr_array) {
                 $("#dialog-body").prepend(dialog_div.outerHTML)
                 $("#dialog-div").prepend(data)
                 var props_map = {
+                    "dialog_prefs.html": "Pd-L20rk",
                     "dialog_canvas.html": "Canvas",
                     "dialog_iemgui.html": "Iemgui",
                     "dialog_gatom.html": "Atom",
